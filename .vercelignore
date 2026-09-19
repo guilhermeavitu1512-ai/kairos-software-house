@@ -1,0 +1,12 @@
+.codex-remote-attachments
+.openai
+.pnpm-store
+.next
+.vinext
+.wrangler
+build
+dist
+nemes-cup-bot
+node_modules
+outputs
+work

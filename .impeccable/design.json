@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T03:07:46Z",
+  "title": "Design System: KAIROS Hero (surface only)",
+  "extensions": {
+    "shadows": [
+      { "name": "hero-action-inset", "value": "inset 0 1px 0 rgb(234 243 255 / 16%)", "purpose": "Primary Hero action highlight." },
+      { "name": "hero-left-plate", "value": "inset -2px -2px 6px rgb(86 166 255 / 28%),8px 9px 0 #050d17,9px 10px 0 #1a3044,20px 28px 50px rgb(0 0 0 / 30%)", "purpose": "Decorative plate thickness; not general UI elevation." },
+      { "name": "hero-right-plate", "value": "inset 1px -2px 5px rgb(86 166 255 / 34%),-8px 9px 0 #050d17,-9px 10px 0 #173047,-20px 28px 50px rgb(0 0 0 / 32%)", "purpose": "Opposing decorative plate thickness." }
+    ],
+    "motion": [
+      { "name": "hero-action", "value": "200ms ease", "purpose": "Action color, border and arrow transitions; disabled for reduced motion." },
+      { "name": "hero-reveal", "value": "0.65s power2.out; starts 0s, 0.08s, 0.14s", "purpose": "Title, support and actions after intro clears." },
+      { "name": "hero-left-idle", "value": "13s ease-in-out infinite alternate; translateY(-2px) to translateY(3px)", "purpose": "Left plate drift while active." },
+      { "name": "hero-right-idle", "value": "17s ease-in-out infinite alternate; translateY(2px) to translateY(-3px)", "purpose": "Opposing right plate drift while active." },
+      { "name": "hero-surface-idle", "value": "19s ease-in-out infinite alternate; translateY(0) to translateY(2px)", "purpose": "Foreground drift while active." }
+    ],
+    "breakpoints": [
+      { "name": "hero-wide-min", "value": "1700px" },
+      { "name": "hero-tablet-max", "value": "1100px" },
+      { "name": "hero-mobile-max", "value": "760px" },
+      { "name": "hero-narrow-max", "value": "359px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero briefing action",
+      "kind": "button",
+      "refersTo": "hero-primary",
+      "description": "Visual sample of the existing briefing trigger; runtime behavior remains in the application.",
+      "html": "<button class=\"ds-hero-primary\">Contar meu problema <span aria-hidden=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></span></button>",
+      "css": ".ds-hero-primary{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:52px;padding:14px 28px;border-radius:999px;font-family:var(--font,Manrope,sans-serif);font-size:14px;font-weight:500;line-height:1.5;color:#f5f7fa;background:#126bff;border:1px solid #478bff;box-shadow:inset 0 1px 0 rgb(234 243 255 / 16%);transition:background-color 200ms ease,border-color 200ms ease}.ds-hero-primary span{line-height:1;transition:transform 200ms ease}.ds-hero-primary svg{display:block}.ds-hero-primary:focus-visible{outline:2px solid #aacaff;outline-offset:5px}@media(hover:hover){.ds-hero-primary:hover{background:#2478ff}.ds-hero-primary:hover span{transform:translateX(3px)}}@media(prefers-reduced-motion:reduce){.ds-hero-primary,.ds-hero-primary span{transition:none}.ds-hero-primary:hover span{transform:none}}"
+    },
+    {
+      "name": "Hero project action",
+      "kind": "button",
+      "refersTo": "hero-secondary",
+      "description": "Secondary link to the existing projects section.",
+      "html": "<a class=\"ds-hero-secondary\" href=\"#projetos\">Ver projetos</a>",
+      "css": ".ds-hero-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 28px;border-radius:999px;font-family:var(--font,Manrope,sans-serif);font-size:14px;font-weight:500;line-height:1.5;text-decoration:none;color:#e2e8f0;border:1px solid rgb(164 184 210 / 30%);background:rgb(3 9 20 / 40%);transition:background-color 200ms ease,border-color 200ms ease}.ds-hero-secondary:focus-visible{outline:2px solid #aacaff;outline-offset:5px}@media(hover:hover){.ds-hero-secondary:hover{border-color:#7895be;background:rgb(20 39 61 / 45%)}}@media(prefers-reduced-motion:reduce){.ds-hero-secondary{transition:none}}"
+    }
+  ],
+  "narrative": {
+    "overview": "This is a surface-scoped record of the implemented home Hero. It does not establish rules for the navbar, intro, Galaxy, Memphis, pricing, cases, or other sections.",
+    "dos": [
+      "Do preserve the approved Hero copy, destinations, readable static state, and reduced-motion behavior.",
+      "Do keep the foreground provenance with its shipping raster."
+    ],
+    "donts": [
+      "Don't infer global rules or authorize changes to other surfaces from this document.",
+      "Don't reuse the service micro-label as a general eyebrow component; it is explicitly pinned content for this Hero."
+    ]
+  }
+}

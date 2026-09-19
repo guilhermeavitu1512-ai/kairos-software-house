@@ -1,0 +1,31 @@
+import { createRequire } from 'node:module';
+import assert from 'node:assert/strict';
+const require = createRequire(import.meta.url);
+const { chromium } = require(process.env.KAIROS_PLAYWRIGHT || 'playwright');
+const browser = await chromium.launch({ headless: true, executablePath: process.env.KAIROS_BROWSER, args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+try {
+ const page = await browser.newPage({viewport:{width:1440,height:900}});
+ const errors=[]; page.on('pageerror',error=>errors.push(error.message));
+ page.on('console', msg => { if(msg.type()==='error') console.log(msg.text()); });
+ await page.goto('http://localhost:3000/');
+ await page.locator('#inicio canvas').waitFor({timeout:60000});
+ await page.waitForTimeout(5000);
+ console.log(await page.locator('#inicio canvas').evaluate(el=>({box:el.getBoundingClientRect().toJSON(),width:el.width,height:el.height})));
+ console.log(await page.locator('#hero-title').evaluate(el=>({text:el.textContent,opacity:getComputedStyle(el).opacity,body:getComputedStyle(document.body).opacity})));
+ await page.screenshot({path:process.env.KAIROS_CAPTURE_DIR+'/orbit-desktop.png'});
+ await page.mouse.wheel(0,400);
+ await page.waitForTimeout(400);
+ assert.ok(await page.evaluate(()=>scrollY)>0);
+ await page.mouse.wheel(0,-400);
+ await page.waitForTimeout(400);
+ assert.equal(await page.evaluate(()=>scrollY),0);
+ await page.emulateMedia({reducedMotion:'reduce'});
+ await page.waitForTimeout(200);
+ assert.equal(await page.locator('#inicio canvas').count(),0);
+ await page.emulateMedia({reducedMotion:'no-preference'});
+ await page.setViewportSize({width:390,height:844});
+ await page.waitForTimeout(200);
+ assert.equal(await page.locator('#inicio canvas').count(),0);
+ console.log('WebGL canvas, native reversible scroll, reduced motion and mobile fallback OK');
+ assert.deepEqual(errors,[]);
+} finally { await browser.close(); }

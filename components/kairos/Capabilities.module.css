@@ -1,0 +1,127 @@
+.services,
+.delivery {
+  --cap-text: #f5f7fa;
+  --cap-muted: #8d9aad;
+  --cap-line: rgba(141, 154, 173, .18);
+  color: var(--cap-text);
+  font-family: inherit;
+}
+
+.shell {
+  width: min(1232px, calc(100% - 96px));
+  margin-inline: auto;
+}
+
+.services {
+  padding-block: 112px 96px;
+  background: #050c17;
+  border-top: 1px solid rgba(141, 154, 173, .12);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  column-gap: 96px;
+  align-items: start;
+}
+
+.intro h2 {
+  margin: 0;
+  max-width: 420px;
+  font-size: clamp(40px, 3.8vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -.04em;
+  font-weight: 600;
+  color: var(--cap-text);
+}
+
+.intro p {
+  max-width: 320px;
+  margin: 24px 0 0;
+  color: var(--cap-muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.serviceList {
+  list-style: none;
+  padding: 0;
+  margin: 64px 0 0;
+  min-width: 0;
+}
+
+.service {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  gap: 24px;
+  align-items: start;
+  padding-block: 32px;
+  border-top: 1px solid var(--cap-line);
+  color: var(--cap-text);
+  text-decoration: none;
+  transition: border-color 200ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.serviceList li:last-child .service { border-bottom: 1px solid var(--cap-line); }
+.index { padding-top: 7px; color: var(--cap-muted); font-size: 14px; font-variant-numeric: tabular-nums; transition: color 200ms ease-out; }
+.serviceCopy { min-width: 0; }
+.serviceCopy h3 { margin: 0; font-size: clamp(25px, 2.2vw, 32px); line-height: 1.2; font-weight: 500; letter-spacing: -.025em; color: var(--cap-text); }
+.serviceCopy p { margin: 12px 0 0; max-width: 48ch; font-size: 16px; line-height: 1.6; color: var(--cap-muted); }
+.price { display: block; margin-top: 16px; font-size: 14px; line-height: 1.5; color: #b2bdcc; }
+.arrow { padding-top: 2px; font-size: 22px; line-height: 1.4; color: #b2bdcc; transition: transform 200ms cubic-bezier(.22, 1, .36, 1), color 200ms ease-out; }
+.service:focus-visible { outline: 2px solid #2797ff; outline-offset: 6px; }
+
+.delivery { background: #030914; padding-block: 96px 112px; }
+.deliveryLayout { border-top: 1px solid var(--cap-line); padding-top: 64px; }
+.deliveryIntro h2 { font-size: clamp(34px, 3.2vw, 46px); max-width: 370px; line-height: 1.14; }
+.intro .eyebrow { margin: 0 0 24px; font-size: 14px; line-height: 1.5; color: var(--cap-muted); }
+.pillarsReveal { padding-top: 48px; }
+.pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 40px; margin: 0; }
+.pillars dt { color: var(--cap-text); font-size: 19px; font-weight: 500; line-height: 1.35; letter-spacing: -.015em; }
+.pillars dd { margin: 12px 0 0; max-width: 31ch; color: var(--cap-muted); font-size: 16px; line-height: 1.65; }
+
+@media (hover: hover) {
+  .service:hover { border-top-color: rgba(39, 151, 255, .45); }
+  .service:hover .index, .service:hover .arrow { color: #2797ff; }
+  .service:hover .arrow { transform: translateX(3px); }
+}
+
+@media (max-width: 1100px) {
+  .shell { width: calc(100% - 64px); }
+  .layout { grid-template-columns: minmax(0, 3fr) minmax(0, 5fr); gap: 48px; }
+  .service { column-gap: 16px; }
+  .pillars { column-gap: 24px; }
+}
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: minmax(0, 1fr); row-gap: 48px; }
+  .intro p { max-width: 440px; }
+  .serviceList, .pillarsReveal { margin-top: 0; padding-top: 0; }
+  .deliveryIntro h2 { max-width: 450px; }
+}
+
+@media (max-width: 760px) {
+  .shell { width: calc(100% - 40px); }
+  .services { padding-block: 64px; }
+  .intro h2 { font-size: clamp(34px, 8vw, 42px); }
+  .intro p { margin-top: 16px; }
+  .service { padding-block: 24px; grid-template-columns: minmax(0, 1fr) 18px; gap: 12px; }
+  .index { padding-top: 5px; }
+  .serviceCopy h3 { font-size: clamp(24px, 6.1vw, 28px); }
+  .serviceCopy p { margin-top: 12px; }
+  .arrow { font-size: 20px; }
+  .delivery { padding-block: 64px; }
+  .deliveryLayout { padding-top: 48px; row-gap: 40px; }
+  .deliveryIntro h2 { max-width: 340px; font-size: clamp(32px, 7.8vw, 38px); }
+  .intro .eyebrow { margin: 0 0 16px; }
+}
+
+@media (max-width: 560px) {
+  .pillars { grid-template-columns: 1fr; gap: 32px; }
+  .pillars dd { max-width: 38ch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service, .index, .arrow { transition: none; }
+  .service:hover .arrow { transform: none; }
+}

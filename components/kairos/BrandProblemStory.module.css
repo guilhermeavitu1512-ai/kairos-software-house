@@ -1,0 +1,28 @@
+.story{position:relative;background:#030914;color:#f5f7fa}
+.sticky{position:relative;isolation:isolate;overflow:clip}
+.texts{position:relative;z-index:0;pointer-events:none}
+.chapter{display:grid;place-items:center;padding:96px 48px;min-height:360px}
+.chapter h2{margin:0;max-width:900px;font-size:clamp(40px,5.2vw,76px);font-weight:600;line-height:1.08;letter-spacing:-.04em;text-wrap:balance;text-align:center;color:#f5f7fa}
+.story[data-enhanced=false] .chapter{opacity:1!important}
+/* Longer native scroll runway: same poses and wipes, one-third slower per pixel. */
+.story[data-enhanced=true]{height:400vh}
+.story[data-enhanced=true] .sticky{position:sticky;top:0;height:100vh;height:100dvh}
+.story[data-enhanced=true] .texts{position:absolute;inset:0}
+.story[data-enhanced=true] .chapter{position:absolute;inset:0;min-height:0}
+.visual{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.visual canvas{pointer-events:none!important}
+.fallback,.webgl{position:absolute;inset:0;pointer-events:none}
+.fallback{opacity:1;transition:opacity 400ms ease-out}
+.webgl{opacity:0;transition:opacity 400ms ease-out}
+.visual[data-scene=webgl] .fallback{opacity:0}
+.visual[data-scene=webgl] .webgl{opacity:1}
+.visual[data-scene=fallback] .fallback{transition:none}
+.visual[data-scene=fallback] .webgl{visibility:hidden}
+.shapes{position:absolute;inset:0;width:100%;height:100%}
+.fallbackArc{position:absolute;left:5%;top:5%;width:clamp(140px,22vw,310px);height:auto}
+.fallbackDisc{position:absolute;right:18%;top:22%;width:clamp(48px,6vw,90px);height:auto}
+.wipe{position:absolute;left:calc(50% - 80vmax);top:calc(50% - 80vmax);width:160vmax;height:160vmax;pointer-events:none}
+.disc{border-radius:50%;background:#1d4269}
+.slab{border-radius:20% 48% 16% 38%;background:#91a8be}
+@media(max-width:760px){.chapter{padding:64px 24px}.chapter h2{font-size:clamp(32px,8.6vw,44px)}.secondary{display:none}.fallbackArc{left:-5%;top:10%;width:180px}.fallbackDisc{right:15%;top:24%}}
+@media(prefers-reduced-motion:reduce){.fallback,.webgl{transition:none}.wipe{display:none}}

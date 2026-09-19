@@ -1,0 +1,76 @@
+/* One variable family across KAIROS. Product/admin branding stays independent. */
+body { letter-spacing: -.005em; }
+.page-transition :is(h1,h2,h3) { letter-spacing: -.03em; }
+
+/* Marketing surfaces only: do not affect product/admin interfaces. */
+.brand-story .section-shell,
+.about-page .section-shell,
+.contact-page .section-shell,
+.projects-page .section-shell,
+.vyne-case-page .section-shell { width: min(1232px, calc(100% - 96px)); max-width: 1232px; }
+.brand-story-frame { will-change: transform, opacity; }
+.brand-story-problem { grid-template-columns: 1fr; }
+.brand-story-heading { max-width: 760px; }
+.brand-story-heading h2, .brand-story-kairos h2, .brand-solution-copy h2 { margin-top: 0; font-size: clamp(38px, 4.4vw, 62px); font-weight: 600; letter-spacing: -.04em; line-height: 1.12; }
+.brand-story-heading p.brand-problem-list { display: block; max-width: 520px; font-size: 18px; line-height: 1.7; }
+.brand-story-mark { width: 96px; height: 96px; margin-bottom: 24px; }
+.brand-story-kairos p { font-size: 17px; }
+.brand-story-solution { grid-template-columns: 1fr; align-content: center; gap: 40px; }
+.brand-solution-copy { max-width: 700px; }
+.brand-solution-copy p { font-size: 17px; margin-top: 24px; }
+.brand-solution-words { display: flex; flex-wrap: wrap; gap: 16px 32px; border: 0; }
+.brand-solution-words span { min-height: 0; padding: 0; border: 0; color: #5c6675; font-size: 20px; font-weight: 400; letter-spacing: 0; }
+.brand-story--static .brand-story-frame { min-height: 0; padding-block: 64px; }
+.about-page-hero, .contact-hero { background: #030914; }
+.page-hero, .about-page-hero, .contact-hero { padding-block: 160px 96px; }
+.page-hero h1, .about-page-hero h1, .contact-hero h1 { max-width: 840px; margin: 0 0 24px; font-size: clamp(42px, 4.8vw, 68px); font-weight: 600; letter-spacing: -.04em; line-height: 1.1; }
+.about-page-hero p, .contact-hero p { color: #8d9aad; max-width: 520px; font-size: 17px; line-height: 1.65; margin: 0; }
+.about-page-story, .about-page-close { padding-block: 96px; }
+.about-story-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); gap: 96px; }
+.about-story-grid h2, .about-page-close h2 { max-width: 700px; margin: 0 0 32px; font-size: clamp(34px, 3.5vw, 48px); letter-spacing: -.035em; line-height: 1.15; }
+.about-story-grid p { max-width: 52ch; font-size: 17px; }
+.principles-band { margin-top: 64px; border: 0; gap: 40px; }
+.principles-band > div, .principles-band > div:first-child { border: 0; padding: 0; }
+.principles-band span { color: #0a1020; font-family: inherit; font-size: 18px; font-weight: 500; text-transform: none; }
+.principles-band p { color: #5c6675; font-size: 16px; line-height: 1.6; }
+.contact-page--editorial { min-height: 75svh; background: #030914; }
+.contact-page--editorial .button { margin-top: 40px; }
+.contact-page--editorial .contact-direct { font-size: 14px; margin-top: 24px; }
+.contact-direct a { color: #b5bfcd; }
+.projects-directory { grid-template-columns: 1fr; gap: 80px; }
+.directory-copy > span { font-size: 14px; text-transform: none; letter-spacing: 0; }
+.directory-copy h2 { font-size: clamp(34px, 3.8vw, 52px); }
+.directory-copy strong { border: 0; }
+.vyne-case-question h2, .vyne-case-section-head h2, .vyne-case-section-head--sticky h2, .vyne-case-direction-copy h2, .vyne-case-outcome-copy h2 { font-size: clamp(36px, 4vw, 58px); letter-spacing: -.04em; line-height: 1.12; font-weight: 600; }
+.vyne-case-principle { grid-template-columns: 1fr 1.25fr; gap: 40px; }
+.vyne-case-principle h3, .vyne-case-decision h3 { font-size: clamp(24px, 2.2vw, 32px); }
+.vyne-case-principle p { grid-column: auto; font-size: 16px; }
+.vyne-case-decision { grid-template-columns: 1fr; }
+.vyne-case-decision p { font-size: 16px; }
+.vyne-case-motion { min-height: 300px; border: 0; background: #030604; }
+.vyne-case-kicker, .vyne-case-section-head > span, .vyne-case-direction-copy > span, .vyne-case-outcome-copy > span { color: var(--vyne-muted); font-size: 14px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.vyne-case-section-head--product > span { color: #5c6675; }
+.case-story-label strong { color: #5c6675; font-weight: 500; }
+.case-story-step h2 { font-size: clamp(36px, 4.4vw, 62px); line-height: 1.12; }
+.about-page .button, .contact-page .button { box-shadow: none; border-radius: 3px; }
+@media(max-width:1100px) {
+  .brand-story .section-shell,.about-page .section-shell,.contact-page .section-shell,.projects-page .section-shell,.vyne-case-page .section-shell { width: calc(100% - 64px); }
+  .about-story-grid { gap: 48px; }
+}
+@media(max-width:760px) {
+  .brand-story .section-shell,.about-page .section-shell,.contact-page .section-shell,.projects-page .section-shell,.vyne-case-page .section-shell { width: calc(100% - 40px); }
+  .brand-story-problem, .brand-story-solution { grid-template-columns: 1fr; align-content: center; gap: 24px; }
+  .brand-story-heading h2,.brand-story-kairos h2,.brand-solution-copy h2 { font-size: clamp(32px, 8.7vw, 42px); line-height: 1.13; }
+  .brand-story-heading p.brand-problem-list,.brand-story-kairos p,.brand-solution-copy p { font-size: 16px; }
+  .brand-solution-words { gap: 12px 24px; }
+  .brand-solution-words span { font-size: 16px; min-height: 0; padding: 0; }
+  .page-hero,.about-page-hero,.contact-hero { padding-block: 120px 64px; }
+  .page-hero h1,.about-page-hero h1,.contact-hero h1 { font-size: clamp(36px, 9.5vw, 48px); }
+  .about-page-story,.about-page-close { padding-block: 64px; }
+  .about-story-grid { grid-template-columns: 1fr; gap: 24px; }
+  .principles-band { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
+  .vyne-case-question h2,.vyne-case-section-head h2,.vyne-case-section-head--sticky h2,.vyne-case-direction-copy h2,.vyne-case-outcome-copy h2 { font-size: clamp(32px, 8.5vw, 42px); }
+  .vyne-case-principle { grid-template-columns: 1fr; gap: 16px; }
+  .vyne-case-principle p { grid-column: 1; }
+  .vyne-case-decision { grid-template-columns: 1fr; }
+}
