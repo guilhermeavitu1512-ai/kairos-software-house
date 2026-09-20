@@ -6,7 +6,7 @@ export const COMPANY = {
   github: "",
   linkedin: "",
   instagram: "",
-  siteUrl: "https://kairos.software",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://kairos-software-house.vercel.app",
 } as const;
 
 export const CONTACT_BUDGETS = [

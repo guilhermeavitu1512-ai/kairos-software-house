@@ -54,7 +54,9 @@ function Composition({progress,compact,active,onReady,onFailure,onSlow,low,bound
   wipes.current?.children.forEach((wipe,i)=>{
    const pose=foregroundPose(p,i,aspect,compact);
    const entry=memphisArrival(i,arrivalProgress.get(),compact,true);
-   wipe.position.set(pose.x,pose.y+entry.y,pose.z-entry.z);wipe.rotation.set(0,pose.ry,pose.rz);wipe.scale.setScalar(pose.s);
+   wipe.position.set(pose.x,pose.y+entry.y,pose.z-entry.z);
+   wipe.scale.set(pose.s*pose.stretch,pose.s,pose.s);
+   wipe.children[0].rotation.set(0,pose.ry,pose.rz);
    entryMaterials[i].opacity=entry.gain;
   });
   if(active&&!slow.current.sent&&Math.abs(progress.getVelocity())>.05&&delta>0&&delta<.12){
@@ -71,8 +73,8 @@ function Composition({progress,compact,active,onReady,onFailure,onSlow,low,bound
   <ambientLight intensity={.8}/><directionalLight position={[-3,5,8]} intensity={2.8} color="#dae6f0"/><directionalLight position={[5,-2,3]} intensity={.75} color="#5b83a5"/>
   <group ref={pieces} dispose={null}>{indices.map(i=><mesh key={i} geometry={resources.geometry[rain[i].kind]} material={rainMaterials[i]}/>)}</group>
   <group ref={wipes} dispose={null}>
-   <mesh geometry={resources.geometry.foregroundArc} material={entryMaterials[0]}/>
-   <mesh geometry={resources.geometry.foregroundCapsule} material={entryMaterials[1]}/>
+   <group><mesh geometry={resources.geometry.foregroundArc} material={entryMaterials[0]}/></group>
+   <group><mesh geometry={resources.geometry.foregroundCapsule} material={entryMaterials[1]}/></group>
   </group>
  </>;
 }

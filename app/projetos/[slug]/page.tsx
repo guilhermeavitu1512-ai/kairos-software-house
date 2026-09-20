@@ -15,12 +15,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return {};
-  const eyebrow = project.slug === "vyne" ? "E-commerce / Product Experience" : project.eyebrow;
-  const description = project.slug === "vyne" ? "Uma experiência de compra de relógios construída para unir desejo, clareza e confiança." : project.description;
+  const eyebrow = project.slug === "vyne" ? "Catálogo de relógios" : project.eyebrow;
+  const description = project.slug === "vyne" ? "Catálogo de relógios com busca, filtros, favoritos e detalhes de cada modelo." : project.description;
   const title = `${project.name} — ${eyebrow}`;
   return {
     title,
     description,
+    alternates: { canonical: `/projetos/${project.slug}` },
     openGraph: { title, description, type: "article", images: project.slug === "vyne" ? [{ url: "/portfolio/vyne/hero-desktop.png", width: 1425, height: 990, alt: "Experiência digital VYNE" }] : [] },
     twitter: { card: "summary_large_image", title, description, images: project.slug === "vyne" ? ["/portfolio/vyne/hero-desktop.png"] : [] },
   };

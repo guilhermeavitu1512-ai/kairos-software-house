@@ -12,7 +12,7 @@ const decisions = [
   ["Descoberta objetiva", "Busca e filtros por marca e mecanismo reduzem o esforço para chegar ao modelo certo."],
   ["Hierarquia de produto", "Marca, mecanismo, atributos, preço e disponibilidade seguem uma ordem consistente em cada ponto de contato."],
   ["Detalhe sem ruptura", "A visualização rápida mantém o contexto do catálogo enquanto aprofunda as informações do relógio."],
-  ["Continuidade responsiva", "No mobile, a mesma narrativa é reorganizada para toque, leitura curta e decisão com uma mão."],
+  ["Continuidade responsiva", "No celular, os controles e as informações se ajustam à largura da tela."],
 ] as const;
 
 export default function VyneCase({ project }: { project: Project }) {
@@ -24,11 +24,11 @@ export default function VyneCase({ project }: { project: Project }) {
 
           <div className="vyne-case-intro">
             <div>
-              <span className="vyne-case-kicker">E-commerce / Product Experience</span>
+              <span className="vyne-case-kicker">Catálogo de relógios</span>
               <h1>{project.name}</h1>
             </div>
             <div className="vyne-case-intro-copy">
-              <p>Uma experiência de compra de relógios construída para unir desejo, clareza e confiança.</p>
+              <p>Um catálogo de relógios com busca, filtros, favoritos e detalhes de cada modelo.</p>
               <dl>
                 <div><dt>Ano</dt><dd>{project.year}</dd></div>
                 <div><dt>Categoria</dt><dd>{project.category}</dd></div>
@@ -56,14 +56,14 @@ export default function VyneCase({ project }: { project: Project }) {
             <p>Contexto e desafio</p>
           </Reveal>
           <Reveal className="vyne-case-challenge-copy">
-            <p className="vyne-case-lead">Um catálogo premium não pode se comportar como uma grade genérica de ofertas.</p>
+            <p className="vyne-case-lead">O projeto reúne modelos de diferentes marcas em um catálogo que pode ser filtrado.</p>
             <p>Apresentar a coleção com contexto, sem esconder as informações de cada relógio.</p>
           </Reveal>
         </div>
 
         <Reveal className="section-shell vyne-case-question">
           <span>A pergunta que orientou o produto</span>
-          <h2>Como transformar um catálogo de relógios em uma experiência de produto?</h2>
+          <h2>Como ajudar quem visita a encontrar e comparar relógios?</h2>
         </Reveal>
       </section>
 
@@ -71,7 +71,7 @@ export default function VyneCase({ project }: { project: Project }) {
         <div className="section-shell">
           <Reveal className="vyne-case-section-head">
             <span>Estratégia</span>
-            <h2>Clareza para escolher.<br />Presença para desejar.</h2>
+            <h2>Fotos e especificações<br />para comparar modelos.</h2>
           </Reveal>
 
           <div className="vyne-case-principles">
@@ -89,8 +89,8 @@ export default function VyneCase({ project }: { project: Project }) {
         <div className="section-shell vyne-case-direction-grid">
           <Reveal className="vyne-case-direction-copy">
             <span>Direção visual</span>
-            <h2>Uma linguagem de luxo contemporâneo, sem excesso.</h2>
-            <p>Preto, verde ácido e branco constroem contraste imediato. A interface recua para que tipografia, produto e informação formem a identidade.</p>
+            <h2>Fundo escuro, fotos grandes e destaques em verde.</h2>
+            <p>O verde destaca ações e informações sobre o fundo preto. As fotos têm espaço próprio, ao lado dos dados de cada relógio.</p>
           </Reveal>
 
           <Reveal className="vyne-case-motion" variant="media">
@@ -110,8 +110,8 @@ export default function VyneCase({ project }: { project: Project }) {
         <div className="section-shell">
           <Reveal className="vyne-case-section-head vyne-case-section-head--product">
             <span>Produto</span>
-            <h2>O relógio ocupa o centro da experiência.</h2>
-            <p>Da descoberta ao detalhe, cada estado preserva escala, contraste e informação suficiente para comparar com segurança.</p>
+            <h2>Do catálogo aos detalhes do relógio.</h2>
+            <p>As telas mostram a busca por modelos, os filtros e a consulta às especificações.</p>
           </Reveal>
 
           <Reveal className="vyne-case-screen vyne-case-screen--wide" variant="media">
@@ -122,7 +122,7 @@ export default function VyneCase({ project }: { project: Project }) {
               height={990}
               sizes="(max-width: 760px) 100vw, 1440px"
             />
-            <figcaption><span>Descoberta</span> Busca, filtros e comparação em uma única superfície.</figcaption>
+            <figcaption><span>Descoberta</span> Busca, filtros e comparação em uma única tela.</figcaption>
           </Reveal>
 
           <Reveal className="vyne-case-screen vyne-case-screen--recommended" variant="media">
@@ -142,8 +142,8 @@ export default function VyneCase({ project }: { project: Project }) {
             </Reveal>
             <Reveal className="vyne-case-product-note">
               <span>Apresentação de produto</span>
-              <h3>Imagem, informação e disponibilidade falam a mesma língua.</h3>
-              <p>A direção evita banners promocionais e ruído comercial. Cada relógio recebe espaço para ser entendido antes de ser comparado.</p>
+              <h3>Fotos e informações de cada modelo.</h3>
+              <p>As fotos acompanham as informações do produto para que a pessoa possa consultar suas características.</p>
               <div className="vyne-case-specimen-list" aria-label="Marcas presentes no catálogo">
                 <span>Seiko</span><span>Casio</span><span>Citizen</span><span>Orient</span><span>Timex</span>
               </div>
@@ -167,7 +167,7 @@ export default function VyneCase({ project }: { project: Project }) {
         <div className="section-shell vyne-case-decisions-grid">
           <Reveal className="vyne-case-section-head vyne-case-section-head--sticky">
             <span>Experiência</span>
-            <h2>Menos ornamento.<br />Mais intenção.</h2>
+            <h2>Como o catálogo<br />foi organizado.</h2>
           </Reveal>
           <div className="vyne-case-decision-list">
             {decisions.map(([title, body], index) => (
@@ -183,7 +183,7 @@ export default function VyneCase({ project }: { project: Project }) {
         <div className="section-shell">
           <Reveal className="vyne-case-section-head">
             <span>Responsivo</span>
-            <h2>A mesma presença, em qualquer escala.</h2>
+            <h2>O catálogo no computador e no celular.</h2>
           </Reveal>
           <div className="vyne-case-responsive-stage">
             <Reveal className="vyne-case-device vyne-case-device--desktop" variant="media">
@@ -200,9 +200,9 @@ export default function VyneCase({ project }: { project: Project }) {
         <div className="section-shell vyne-case-outcome-grid">
           <Reveal className="vyne-case-outcome-copy">
             <span>Entrega</span>
-            <h2>Marca e comércio reunidos em uma experiência coerente.</h2>
+            <h2>Catálogo, filtros e favoritos em um só site.</h2>
             <p>O produto final combina narrativa de marca, curadoria, catálogo, filtros, favoritos e detalhe de produto em um fluxo responsivo.</p>
-            <a className="vyne-case-live-link" href="https://vyne-relogios.vercel.app" target="_blank" rel="noreferrer">Visitar experiência <span>↗</span></a>
+            <a className="vyne-case-live-link" href="https://vyne-relogios.vercel.app" target="_blank" rel="noreferrer">Visitar o site <span>↗</span></a>
           </Reveal>
           <Reveal className="vyne-case-build">
             <div><span>Implementação</span><p>Arquitetura em App Router, componentes reutilizáveis, dados tipados e catálogo integrado ao Supabase.</p></div>
@@ -212,7 +212,7 @@ export default function VyneCase({ project }: { project: Project }) {
       </section>
 
       <Link className="vyne-case-close" href="/projetos">
-        <span>Arquivo de projetos</span>
+        <span>Portfólio</span>
         <strong>Explorar outros projetos</strong>
         <i aria-hidden="true">→</i>
       </Link>

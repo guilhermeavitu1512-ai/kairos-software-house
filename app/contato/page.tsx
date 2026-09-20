@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import { ProblemFlowTrigger } from "@/components/kairos/problem-flow/ProblemFlow";
-import { buildWhatsAppMessageUrl } from "@/lib/constants";
-
-export const metadata: Metadata = { title: "Contato", description: "Conte o que está dando trabalho. A KAIROS ajuda a entender o próximo passo." };
-
+import { buildWhatsAppUrl } from "@/lib/constants";
+import styles from "@/components/kairos/ConversionSections.module.css";
+export const metadata: Metadata = { title: "Converse sobre seu projeto", description: "Fale diretamente com a KAIROS pelo WhatsApp sobre seu site, sistema ou aplicativo.", alternates:{canonical:"/contato"} };
 export default function ContactPage() {
-  return <main id="conteudo" className="inner-page contact-page contact-page--editorial">
-    <header className="contact-hero">
-      <div className="section-shell">
-        <h1>Conte o que está dando trabalho.</h1>
-        <p>Você não precisa saber qual sistema precisa.</p>
-        <ProblemFlowTrigger className="button">Contar meu problema <span aria-hidden="true">→</span></ProblemFlowTrigger>
-        <p className="contact-direct">Prefere falar direto? <a href={buildWhatsAppMessageUrl("Olá! Conheci a KAIROS pelo site e queria conversar sobre um problema no meu negócio.")} target="_blank" rel="noopener noreferrer">WhatsApp →</a></p>
-      </div>
-    </header>
-  </main>;
+  return <main id="conteudo"><section className={`${styles.section} ${styles.page}`}><div className={`${styles.shell} ${styles.prose}`}>
+    <p className={styles.label}>ATENDIMENTO DIRETO PELO WHATSAPP</p><h1>O que você quer criar ou melhorar?</h1>
+    <p>Conte um pouco sobre sua empresa e o que precisa. Pode ser um site novo, uma ideia de aplicativo ou uma tarefa que dá trabalho todos os dias.</p>
+    <p>Você não precisa chegar com uma lista de funcionalidades. A conversa serve para entender o projeto e definir o que entra na proposta.</p>
+    <div className={styles.pageActions}><a className="button" href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="contact">Conversar no WhatsApp →</a><ProblemFlowTrigger className={styles.link}>Prefiro preparar um resumo →</ProblemFlowTrigger></div>
+    <p>Ao escolher o resumo, você responde três perguntas e confere a mensagem antes de enviá-la no WhatsApp.</p>
+  </div></section></main>;
 }

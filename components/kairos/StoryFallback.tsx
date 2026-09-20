@@ -31,7 +31,8 @@ export default function StoryFallback({progress,still,bounds,active}:{progress:M
     node.removeAttribute('visibility');
     const unit=1000/(2*Math.tan(Math.PI/9)*distance);
     node.setAttribute('opacity',String(entry.gain));
-    node.setAttribute('transform',`translate(${pose.x*unit} ${-(pose.y+entry.y)*unit}) rotate(${-pose.rz*180/Math.PI}) scale(${pose.s*unit})`);
+    const stretch='stretch' in pose?pose.stretch:1;
+    node.setAttribute('transform',`translate(${pose.x*unit} ${-(pose.y+entry.y)*unit}) scale(${stretch} 1) rotate(${-pose.rz*180/Math.PI}) scale(${pose.s*unit})`);
    };
    svg.querySelectorAll('[data-rain]').forEach((node,i)=>{
     if(compact&&!mobileIndices.includes(i)){node.setAttribute('visibility','hidden');return;}

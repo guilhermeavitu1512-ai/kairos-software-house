@@ -4,8 +4,8 @@
 .chapter{display:grid;place-items:center;padding:96px 48px;min-height:360px}
 .chapter h2{margin:0;max-width:900px;font-size:clamp(40px,5.2vw,76px);font-weight:600;line-height:1.08;letter-spacing:-.04em;text-wrap:balance;text-align:center;color:#f5f7fa}
 .story[data-enhanced=false] .chapter{opacity:1!important}
-/* Longer native scroll runway: same poses and wipes, one-third slower per pixel. */
-.story[data-enhanced=true]{height:400vh}
+/* Room to read each chapter and complete both halves of each Memphis wipe. */
+.story[data-enhanced=true]{height:460vh}
 .story[data-enhanced=true] .sticky{position:sticky;top:0;height:100vh;height:100dvh}
 .story[data-enhanced=true] .texts{position:absolute;inset:0}
 .story[data-enhanced=true] .chapter{position:absolute;inset:0;min-height:0}

@@ -11,12 +11,14 @@ export default function SiteFooter() {
         <nav className="footer-nav" aria-label="Navegação do rodapé">
           <Link href="/#projetos">Projetos</Link>
           <Link href="/#servicos">Serviços</Link>
-          <Link href="/#sobre">Sobre</Link>
+          <Link href="/#precos">Planos</Link>
+          <Link href="/privacidade">Privacidade</Link>
+          <Link href="/sobre">Sobre</Link>
           <Link href="/contato">Contato</Link>
         </nav>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} KAIROS</span>
+        <span>© {new Date().getFullYear()} KAIROS · Sites, sistemas e automações</span>
         <a href="#conteudo">Voltar ao topo ↑</a>
       </div>
     </footer>

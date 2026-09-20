@@ -6,8 +6,8 @@ import styles from "./BrandProblemStory.module.css";
 import StoryVisual from "./StoryVisual";
 import { activeChapter, textOpacity } from "./story-timeline";
 import type { CopyBounds } from "./story-motion";
+import { storyChapters as chapters } from "@/data/site-copy";
 
-const chapters = ["Organize o que hoje está espalhado.","Automatize o que se repete.","Construa apenas o que faz sentido."];
 const subscribe = () => () => {};
 const client = () => true;
 const server = () => false;
@@ -66,7 +66,7 @@ export default function BrandProblemStory() {
     const copyObserver=new MutationObserver(measure);copyObserver.observe(title,{childList:true,characterData:true,subtree:true});measure();
     return()=>{observer.disconnect();copyObserver.disconnect();};
   },[enhanced,reduced]);
-  return <section ref={ref} id="sobre" className={styles.story} data-enhanced={enhanced} aria-label="Organizar, automatizar e construir com a KAIROS">
+  return <section ref={ref} id="sobre" className={styles.story} data-enhanced={enhanced} aria-label="O que sites, sistemas e automações podem resolver">
     <div className={styles.sticky}>
       <StoryVisual key={reduced?'reduced':'motion'} progress={progress} still={reduced} bounds={bounds} onFrame={onFrame} onPresentation={onPresentation}/>
       <div className={styles.texts}>

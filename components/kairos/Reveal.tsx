@@ -1,6 +1,7 @@
 "use client";
 
-import { m, useReducedMotion } from "framer-motion";
+import { m } from "framer-motion";
+import useReducedMotionPreference from "./useReducedMotionPreference";
 import type { ReactNode } from "react";
 import { MOTION_DURATION, MOTION_EASE } from "./motion";
 
@@ -15,7 +16,7 @@ export default function Reveal({
   delay?: number;
   variant?: "default" | "media";
 }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotionPreference();
   const mediaReveal = variant === "media";
   return (
     <m.div

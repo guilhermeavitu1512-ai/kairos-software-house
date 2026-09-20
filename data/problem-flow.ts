@@ -1,7 +1,7 @@
 export const BUSINESS_TYPES = ["Comércio", "Restaurante / Delivery", "Clínica / Consultório", "Serviço", "Loja online", "Empresa / Operação interna", "Outro"] as const;
 export const CURRENT_PROCESSES = ["WhatsApp", "Caderno / papel", "Planilhas", "Outro sistema", "Processo manual", "Ainda não tenho nada"] as const;
 export const GOALS = ["Organizar informações", "Automatizar tarefas", "Facilitar atendimento", "Controlar pedidos", "Organizar agenda", "Melhorar presença online", "Ainda não sei", "Outro"] as const;
-export const QUESTIONS = ["O que está dando trabalho hoje?", "Que tipo de negócio é o seu?", "Como você faz isso hoje?", "O que você gostaria que funcionasse melhor?", "Como podemos falar com você?"] as const;
+export const QUESTIONS = ["O que você quer criar ou melhorar?", "Que tipo de negócio é o seu?", "Como você se chama?"] as const;
 export type CurrentProcess = typeof CURRENT_PROCESSES[number];
 export type Goal = typeof GOALS[number];
 export type ProblemAnswers = {
@@ -42,12 +42,9 @@ export function formatBrazilPhone(value: string) {
 export function validateProblemStep(step: number, a: ProblemAnswers): string {
   if (step === 0 && (!a.problem.trim() || a.problem.length > 600)) return "Conte um pouco sobre o que está dando trabalho, em até 600 caracteres.";
   if (step === 1 && (!a.business || (a.business === "Outro" && !a.otherBusiness.trim()))) return "Informe o tipo do seu negócio.";
-  if (step === 2 && !a.current.length) return "Selecione como você faz isso hoje.";
-  if (step === 3 && (!a.goals.length || (a.goals.includes("Outro") && !a.otherGoal.trim()))) return "Conte o que gostaria de melhorar.";
-  if (step === 4) {
+  if (step === 2) {
     if (!a.name.trim()) return "Informe seu nome.";
-    if (!a.whatsapp.trim()) return "Informe seu WhatsApp.";
-    if (!validBrazilPhone(a.whatsapp)) return "Confira seu WhatsApp, incluindo o DDD.";
+    if (a.whatsapp.trim() && !validBrazilPhone(a.whatsapp)) return "Confira seu WhatsApp, incluindo o DDD.";
     if (a.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a.email.trim())) return "Confira seu e-mail ou deixe esse campo vazio.";
   }
   return "";
@@ -56,12 +53,11 @@ export const businessLabel = (a: ProblemAnswers) => a.business === "Outro" ? a.o
 export const goalsLabel = (a: ProblemAnswers) => a.goals.map(goal => goal === "Outro" ? a.otherGoal.trim() : goal).join(", ");
 export function buildProblemMessage(a: ProblemAnswers) {
   return [
-    "Olá! Conheci a KAIROS pelo site e queria conversar sobre um problema no meu negócio.",
-    `O que está dando trabalho:\n${a.problem.trim()}`,
+    "Olá! Conheci a KAIROS pelo site e queria conversar sobre um projeto.",
+    `O que preciso:\n${a.problem.trim()}`,
     `Tipo de negócio:\n${businessLabel(a)}`,
-    `Como funciona hoje:\n${a.current.join(", ")}`,
-    `O que gostaria de melhorar:\n${goalsLabel(a)}`,
-    `Nome: ${a.name.trim()}\nWhatsApp: ${formatBrazilPhone(a.whatsapp)}`,
+    `Nome: ${a.name.trim()}`,
+    a.whatsapp.trim() ? `WhatsApp: ${formatBrazilPhone(a.whatsapp)}` : "",
     a.email.trim() ? `E-mail: ${a.email.trim()}` : "",
     a.company.trim() ? `Empresa: ${a.company.trim()}` : "",
   ].filter(Boolean).join("\n\n");

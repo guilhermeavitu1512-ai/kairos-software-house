@@ -6,8 +6,8 @@ export type Service = {
 };
 
 export const services: Service[] = [
-  { name: "Sites", description: "Presença digital clara, com a identidade do seu negócio.", price: "", message: "um site" },
-  { name: "Sistemas & SaaS", description: "Software sob medida para organizar a operação.", price: "", message: "um sistema ou produto SaaS" },
-  { name: "Aplicativos", description: "Experiências mobile pensadas para o uso diário.", price: "", message: "um aplicativo" },
-  { name: "Bots & Automações", description: "Menos tarefas manuais. Processos mais simples.", price: "", message: "bots e automações" },
+  { name: "Sites", description: "Páginas para apresentar sua empresa, explicar seus serviços e receber pedidos de orçamento.", price: "", message: "um site" },
+  { name: "Sistemas & SaaS", description: "Sistemas para acompanhar pedidos, organizar agendas ou reunir informações da sua operação.", price: "", message: "um sistema ou produto SaaS" },
+  { name: "Aplicativos", description: "Aplicativos para seus clientes ou sua equipe, com as funções definidas para o projeto.", price: "", message: "um aplicativo" },
+  { name: "Bots & Automações", description: "Integrações para reduzir tarefas repetitivas, como copiar dados e enviar avisos manualmente.", price: "", message: "bots e automações" },
 ];

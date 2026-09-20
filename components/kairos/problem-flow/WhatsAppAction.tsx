@@ -21,9 +21,9 @@ export default function WhatsAppAction({ answers }: { answers: ProblemAnswers })
     catch { setShowCopy(true); setStatus("Selecione e copie o resumo abaixo."); }
   }
   return <div className={styles.whatsapp}>
-    <p className={styles.ready}>Briefing pronto.</p>
+    <p className={styles.ready}>Resumo pronto.</p>
     <p className={styles.hint}>O site prepara a mensagem. Você confirma o envio no WhatsApp.</p>
-    {configured ? <a className={styles.primary} href={buildWhatsAppMessageUrl(message)} target="_blank" rel="noopener noreferrer" onClick={() => setStatus("Seu briefing continua aqui caso queira ajustar alguma informação.")}>Continuar no WhatsApp <span aria-hidden="true">→</span></a> : <p role="status" className={styles.hint}>WhatsApp indisponível no momento. Você pode copiar seu resumo e mantê-lo com você.</p>}
+    {configured ? <a className={styles.primary} href={buildWhatsAppMessageUrl(message)} data-conversion="whatsapp_open" data-source="form_summary" target="_blank" rel="noopener noreferrer" onClick={() => setStatus("Seu resumo continua aqui caso queira ajustar alguma informação.")}>Continuar no WhatsApp <span aria-hidden="true">→</span></a> : <p role="status" className={styles.hint}>WhatsApp indisponível no momento. Você pode copiar seu resumo e mantê-lo com você.</p>}
     <button type="button" className={styles.textButton} onClick={copy}>Copiar resumo</button>
     {configured && <p className={styles.hint}>O WhatsApp não abriu? Tente o link novamente ou copie o resumo.</p>}
     <p role="status" className={styles.hint}>{status}</p>

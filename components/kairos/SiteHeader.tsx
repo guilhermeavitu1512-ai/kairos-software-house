@@ -8,7 +8,8 @@ import { ProblemFlowTrigger } from "./problem-flow/ProblemFlow";
 const links = [
   { label: "Projetos", href: "/#projetos" },
   { label: "Serviços", href: "/#servicos" },
-  { label: "Sobre", href: "/#sobre" },
+  { label: "Planos", href: "/#precos" },
+  { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ];
 
@@ -54,7 +55,7 @@ export default function SiteHeader() {
         <nav className="desktop-nav" aria-label="Navegação principal">
           {links.map((link) => <Link key={link.label} href={link.href}>{link.label}</Link>)}
         </nav>
-        <ProblemFlowTrigger className="header-cta">Contar meu problema</ProblemFlowTrigger>
+        <ProblemFlowTrigger className="header-cta">Solicitar orçamento</ProblemFlowTrigger>
         <button
           ref={toggleRef}
           className={`menu-toggle${menuOpen ? " is-open" : ""}`}
@@ -73,7 +74,7 @@ export default function SiteHeader() {
             {link.label}
           </Link>
         ))}
-        <ProblemFlowTrigger onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>Contar meu problema</ProblemFlowTrigger>
+        <ProblemFlowTrigger onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>Solicitar orçamento</ProblemFlowTrigger>
       </nav>
     </>
   );

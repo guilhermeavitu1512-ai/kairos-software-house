@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import Reveal from "@/components/kairos/Reveal";
-import { ProblemFlowTrigger } from "@/components/kairos/problem-flow/ProblemFlow";
-
-export const metadata: Metadata = { title: "Sobre", description: "Estratégia, design e desenvolvimento, em um só lugar." };
+import Link from "next/link";
+import { buildWhatsAppUrl } from "@/lib/constants";
+import { ProcessSection } from "@/components/kairos/ConversionSections";
+import styles from "@/components/kairos/ConversionSections.module.css";
+export const metadata: Metadata = { title: "Sobre a KAIROS", description: "Sites, sistemas e automações com atendimento direto da KAIROS, do primeiro contato à entrega.", alternates:{canonical:"/sobre"} };
 export default function AboutPage() {
-  return <main id="conteudo" className="inner-page about-page">
-    <header className="about-page-hero"><div className="section-shell"><h1>Software com propósito.</h1><p>Estratégia, design e desenvolvimento, em um só lugar.</p></div></header>
-    <section className="about-page-story section--light"><div className="section-shell about-story-grid">
-      <Reveal><h2>O momento certo.</h2></Reveal>
-      <Reveal><p>Kairós é o momento oportuno: quando uma ideia encontra clareza para se tornar produto.</p><p>Começamos entendendo o contexto. Depois, construímos o que faz sentido.</p></Reveal>
-    </div><div className="section-shell principles-band">
-      <Reveal><span>Estratégia</span><p>Entender antes de construir.</p></Reveal>
-      <Reveal><span>Design</span><p>Clareza em cada interação.</p></Reveal>
-      <Reveal><span>Desenvolvimento</span><p>Software preparado para evoluir.</p></Reveal>
+  return <main id="conteudo">
+    <section className={`${styles.section} ${styles.page}`}><div className={`${styles.shell} ${styles.prose}`}>
+      <p className={styles.label}>KAIROS · DESENVOLVIMENTO DE SITES E SOFTWARE</p>
+      <h1>Você fala diretamente com quem cuida do seu projeto.</h1>
+      <p>A KAIROS desenvolve sites para empresas e ferramentas para a rotina do negócio: sistemas, aplicativos e automações.</p>
+      <p>O atendimento acontece diretamente com a KAIROS, principalmente pelo WhatsApp, desde a primeira conversa até a entrega. É por ali que você apresenta sua necessidade, tira dúvidas e acompanha o trabalho.</p>
+      <h2>O combinado vem antes do desenvolvimento.</h2>
+      <p>A proposta define as páginas, funcionalidades, prazo e revisões do projeto. Os planos de sites não têm mensalidade obrigatória. Domínio, hospedagem e serviços de manutenção são tratados separadamente.</p>
+      <p>Para conhecer o trabalho, veja as telas e os detalhes dos projetos disponíveis no portfólio.</p>
+      <div className={styles.pageActions}><Link className="button" href="/projetos">Ver projetos →</Link><a className={styles.link} href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="about">Conversar com a KAIROS →</a></div>
     </div></section>
-    <section className="about-page-close"><div className="section-shell"><h2>Comece pelo contexto.</h2><ProblemFlowTrigger className="button">Contar meu problema <span aria-hidden="true">→</span></ProblemFlowTrigger></div></section>
+    <ProcessSection />
   </main>;
 }

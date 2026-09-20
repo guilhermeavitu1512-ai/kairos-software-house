@@ -1,34 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
-import { labProjects } from "@/data/lab";
-import LabMedia from "./LabMedia";
-import Reveal from "./Reveal";
+import { portfolioProjects } from "@/data/projects";
 import styles from "./KairosLab.module.css";
 
 export default function KairosLab() {
   return <section id="projetos" className={styles.lab} aria-labelledby="lab-title">
-    <header className={styles.intro}>
-      <div className={styles.shell}>
-        <Reveal>
-          <h2 id="lab-title">KAIROS <span>Lab</span></h2>
-          <p>Projetos autorais e conceituais. Diferentes contextos, novas possibilidades.</p>
-        </Reveal>
-      </div>
-    </header>
-    <div id="repertorio">
-      {labProjects.map((project) => <article key={project.slug} className={`${styles.project} ${styles[project.theme]}`} aria-labelledby={`lab-${project.slug}`}>
-        <div className={styles.shell}>
-          <Reveal className={styles.projectLayout}>
-            <header className={styles.projectHeader}>
-              <h3 id={`lab-${project.slug}`}>{project.name}</h3>
-              <p className={styles.type}>{project.kind} <span aria-hidden="true">·</span> {project.category}</p>
-            </header>
-            <LabMedia project={project} />
-            <div className={styles.projectFooter}>
-              <p>{project.description}</p>
-              <Link className={styles.link} href={`/projetos/${project.slug}`} aria-label={`Explorar projeto ${project.name}`}>Explorar projeto <span aria-hidden="true">→</span></Link>
-            </div>
-          </Reveal>
-        </div>
+    <header className={styles.intro}><div className={styles.shell}><h2 id="lab-title">Veja o trabalho na prática.</h2><p>Telas e funcionalidades de projetos desenvolvidos pela KAIROS. Veja os detalhes para avaliar o que faz sentido para o seu negócio.</p></div></header>
+    <div className={`${styles.shell} ${styles.portfolioGrid}`}>
+      {portfolioProjects.map(project=><article key={project.id} className={styles.portfolioCard}>
+        <Link href={project.url} aria-label={`Ver projeto ${project.name}`} className={styles.portfolioImage}><Image src={project.image} alt={`Página do projeto ${project.name}`} width={1440} height={1000} sizes="(max-width:760px) calc(100vw - 40px), 600px" /></Link>
+        <p className={styles.portfolioType}>{project.id === "kairos" ? "SITE PRÓPRIO · KAIROS" : "PROJETO DESENVOLVIDO · CATÁLOGO DE RELÓGIOS"}</p>
+        <h3>{project.name}</h3><p>{project.description}</p>
+        <Link className={styles.link} href={project.url}>{project.id === "kairos" ? "Explorar este site" : "Ver telas e funcionalidades"} <span aria-hidden="true">→</span></Link>
       </article>)}
     </div>
   </section>;

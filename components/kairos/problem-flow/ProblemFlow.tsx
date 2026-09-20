@@ -3,8 +3,10 @@
 import { createContext, useContext, useEffect, useRef, useState, type AnchorHTMLAttributes, type ReactNode, type FormEvent } from "react";
 import Link from "next/link";
 import { EMPTY_PROBLEM, QUESTIONS, validateProblemStep, type ProblemAnswers } from "@/data/problem-flow";
-import { BusinessTypeStep, ContactStep, CurrentProcessStep, GoalStep, ProblemStep, type UpdateAnswer } from "./ProblemSteps";
+import { BusinessTypeStep, ContactStep, ProblemStep, type UpdateAnswer } from "./ProblemSteps";
 import ProblemReview from "./ProblemReview";
+import { buildWhatsAppUrl } from "@/lib/constants";
+import { trackConversion } from "@/lib/conversion";
 import styles from "./ProblemFlow.module.css";
 
 const FlowContext = createContext<(() => void) | null>(null);
@@ -28,7 +30,7 @@ export default function ProblemFlowProvider({ children }: { children: ReactNode 
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState("");
 
-  function open() { origin.current = document.activeElement as HTMLElement | null; setOpened(true); }
+  function open() { trackConversion("form_start"); origin.current = document.activeElement as HTMLElement | null; setOpened(true); }
   function close() { setOpened(false); }
   useEffect(() => {
     const openHash = () => { if (location.hash === "#briefing") setOpened(true); };
@@ -60,12 +62,12 @@ export default function ProblemFlowProvider({ children }: { children: ReactNode 
     const issue = validateProblemStep(step, answers);
     if (issue) { setError(issue); return; }
     setError("");
-    if (editing || step === 4) { setReviewing(true); setEditing(false); }
+    if (editing || step === 2) { if (!editing) trackConversion("form_complete"); setReviewing(true); setEditing(false); }
     else setStep(current => current + 1);
   }
   function back() {
     setError("");
-    if (reviewing) { setReviewing(false); setStep(4); }
+    if (reviewing) { setReviewing(false); setStep(2); }
     else if (editing) { setEditing(false); setReviewing(true); }
     else if (step === 0) close();
     else setStep(current => current - 1);
@@ -77,19 +79,19 @@ export default function ProblemFlowProvider({ children }: { children: ReactNode 
     <dialog ref={dialog} className={styles.dialog} aria-labelledby="problem-flow-title" onCancel={event => { event.preventDefault(); close(); }}>
       <div className={styles.topbar}><span>KAIROS</span><button type="button" onClick={close}>Fechar <span aria-hidden="true">×</span></button></div>
       <div className={styles.content}>
-        <p className={styles.progress}>{reviewing ? "Revisão" : `Pergunta ${step + 1} de 5`}</p>
-        <h2 id="problem-flow-title" ref={heading} tabIndex={-1}>{reviewing ? "É isso?" : QUESTIONS[step]}</h2>
+        <p className={styles.hint}>Prepare um resumo em três etapas ou <a href={buildWhatsAppUrl()} data-conversion="whatsapp_open" data-source="form_direct" target="_blank" rel="noopener noreferrer">converse direto no WhatsApp</a>.</p>
+        <p className={styles.progress}>{reviewing ? "Revisão" : `Pergunta ${step + 1} de 3`}</p>
+        <h2 id="problem-flow-title" ref={heading} tabIndex={-1}>{reviewing ? "Confira seu resumo" : QUESTIONS[step]}</h2>
         <div key={reviewing ? "review" : step} className={styles.step}>
           {reviewing ? <><ProblemReview answers={answers} edit={edit} /><button className={styles.textButton} type="button" onClick={back}>← Voltar</button></> : <form onSubmit={continueFlow} noValidate>
             {step === 0 && <ProblemStep {...props} />}
             {step === 1 && <BusinessTypeStep {...props} />}
-            {step === 2 && <CurrentProcessStep {...props} />}
-            {step === 3 && <GoalStep {...props} />}
-            {step === 4 && <ContactStep {...props} />}
+            {step === 2 && <ContactStep {...props} />}
+            <p className={styles.hint}>Você confere a mensagem antes de enviar no WhatsApp. <Link href="/privacidade" onClick={close}>Como seus dados são usados</Link>.</p>
             <p id="flow-error" role="alert" className={styles.error}>{error}</p>
             <div className={styles.actions}>
               <button className={styles.textButton} type="button" onClick={back}>← Voltar</button>
-              <button className={styles.primary} type="submit">{editing ? "Revisar alteração" : "Continuar"} <span aria-hidden="true">→</span></button>
+              <button className={styles.primary} type="submit">{editing ? "Revisar alteração" : step === 2 ? "Revisar resumo" : "Continuar"} <span aria-hidden="true">→</span></button>
             </div>
           </form>}
         </div>

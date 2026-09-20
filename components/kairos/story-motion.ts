@@ -1,4 +1,4 @@
-import {mix,smooth,localProgress,wipeProgress} from "./story-timeline";
+import {mix,smooth,localProgress,wipeProgress,wipeTravel} from "./story-timeline";
 export const cameraZ=8;
 const tangent=Math.tan(Math.PI/9);
 export type Kind="arc"|"ring"|"disc"|"capsule"|"block"|"cut";
@@ -41,19 +41,21 @@ export function rainPose(index:number,p:number,aspect:number,compact:boolean,bou
 // Fixed depth, scale and rotation: no perspective growth at any wipe progress.
 export function foregroundPose(p:number,index:number,aspect:number,compact:boolean){
  const t=wipeProgress(p,index),scale=compact?.72:1;
- const distance=(compact?(index===0?1.3:1.65):(index===0?.95:1.08))*scale/Math.max(1,aspect/2.2);
- const approach=smooth(localProgress(t,0,.88)),exit=smooth(localProgress(t,.94,1));
+ // Fit the solid part over the entire viewport at the midpoint, including
+ // portrait and ultrawide screens. Depth stays fixed throughout the wipe.
+ const distance=(index===0?.68:.85)*scale;
+ const stretch=Math.max(1,aspect);
  const ry=0,rz=index===0?(compact?Math.PI/2+.12:.12):compact?Math.PI/2-.1:-.2;
  const h=2*tangent*distance;
- const travel=h*aspect/2+2.5*scale;
+ const travel=h*aspect/2+2.5*scale*stretch;
  const direction=index===0?1:-1;
- let tx=direction*travel*(1-approach-exit);
+ let tx=-direction*travel*wipeTravel(t);
  let ty=0;
  const z=cameraZ-distance;
  if(index===0){
   // Track a point on the arc's left-hand tube, rather than aiming its empty hole.
-  tx+=.85*scale*Math.cos(rz);
+  tx+=.85*scale*Math.cos(rz)*stretch;
   ty+=.85*scale*Math.sin(rz);
  }
- return {x:tx,y:ty,z,ry,rz,s:scale,t};
+ return {x:tx,y:ty,z,ry,rz,s:scale,stretch,t};
 }
