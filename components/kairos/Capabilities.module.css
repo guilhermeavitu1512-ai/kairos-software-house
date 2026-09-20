@@ -46,13 +46,13 @@
 .serviceList {
   list-style: none;
   padding: 0;
-  margin: 64px 0 0;
+  margin: 0;
   min-width: 0;
 }
 
 .service {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 24px;
+  grid-template-columns: 32px minmax(0, 1fr) 24px;
   gap: 24px;
   align-items: start;
   padding-block: 32px;
@@ -105,7 +105,7 @@
   .services { padding-block: 64px; }
   .intro h2 { font-size: clamp(34px, 8vw, 42px); }
   .intro p { margin-top: 16px; }
-  .service { padding-block: 24px; grid-template-columns: minmax(0, 1fr) 18px; gap: 12px; }
+  .service { padding-block: 24px; grid-template-columns: 22px minmax(0, 1fr) 18px; gap: 12px; }
   .index { padding-top: 5px; }
   .serviceCopy h3 { font-size: clamp(24px, 6.1vw, 28px); }
   .serviceCopy p { margin-top: 12px; }
@@ -125,3 +125,10 @@
   .service, .index, .arrow { transition: none; }
   .service:hover .arrow { transform: none; }
 }
+
+.delivery { padding-block:0 48px; }
+.deliveryNote { display:grid; grid-template-columns:1fr 2fr; column-gap:64px; border-top:1px solid var(--cap-line); padding-top:28px; }
+.deliveryNote h2 { margin:0; font-size:20px; font-weight:500; }
+.deliveryNote p { margin:0; color:var(--cap-muted); font-size:14px; line-height:1.75; max-width:76ch; }
+.deliveryNote a { grid-column:2; margin-top:12px; font-size:13px; color:#b2bdcc; text-underline-offset:4px; }
+@media(max-width:760px) { .deliveryNote { grid-template-columns:1fr; gap:14px; } .deliveryNote a { grid-column:1; margin:0; } }

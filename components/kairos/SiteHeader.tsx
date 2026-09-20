@@ -55,7 +55,7 @@ export default function SiteHeader() {
         <nav className="desktop-nav" aria-label="Navegação principal">
           {links.map((link) => <Link key={link.label} href={link.href}>{link.label}</Link>)}
         </nav>
-        <ProblemFlowTrigger className="header-cta">Solicitar orçamento</ProblemFlowTrigger>
+        <ProblemFlowTrigger className="header-cta">Contar meu problema</ProblemFlowTrigger>
         <button
           ref={toggleRef}
           className={`menu-toggle${menuOpen ? " is-open" : ""}`}
@@ -74,7 +74,7 @@ export default function SiteHeader() {
             {link.label}
           </Link>
         ))}
-        <ProblemFlowTrigger onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>Solicitar orçamento</ProblemFlowTrigger>
+        <ProblemFlowTrigger onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>Contar meu problema</ProblemFlowTrigger>
       </nav>
     </>
   );

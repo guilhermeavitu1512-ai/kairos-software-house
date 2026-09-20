@@ -10,18 +10,18 @@ export default function ServicesSection() {
       <div className={`${styles.shell} ${styles.layout}`}>
         <Reveal className={styles.intro}>
           <h2 id="services-title">O que você precisa criar?</h2>
-          <p>Um site para seus clientes conhecerem a empresa ou uma ferramenta para o trabalho do dia a dia. Cada serviço tem seu próprio escopo.</p>
+          <p>Da apresentação da empresa às ferramentas da operação. Definimos o que construir a partir do seu problema.</p>
         </Reveal>
 
         <ol className={styles.serviceList}>
-          {services.map((service) => (
+          {services.map((service, index) => (
             <li key={service.name}>
               <Reveal>
-                <ProblemFlowTrigger className={styles.service} aria-label={`${service.name} — solicitar orçamento`}>
-                  <div className={styles.serviceCopy}>
+                <ProblemFlowTrigger className={styles.service} subject={service.name} aria-label={`${service.name} — contar meu problema`}>
+                  <span className={styles.index} aria-hidden="true">0{index + 1}</span><div className={styles.serviceCopy}>
                     <h3>{service.name}</h3>
                     <p>{service.description}</p>
-                    <span className={styles.price}>{service.name === "Sites" ? `A partir de R$ ${sitePlans[0].upfront}` : "Solicitar orçamento"}</span>
+                    <span className={styles.price}>{service.name === "Sites" ? `A partir de R$ ${sitePlans[0].upfront}` : "Sob orçamento"}</span>
                   </div>
                   <span className={styles.arrow} aria-hidden="true">→</span>
                 </ProblemFlowTrigger>

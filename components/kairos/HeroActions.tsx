@@ -1,11 +1,11 @@
-import { buildWhatsAppUrl } from "@/lib/constants";
+import { ProblemFlowTrigger } from "./problem-flow/ProblemFlow";
 import styles from "./Hero.module.css";
 
 export default function HeroActions() {
   return <div className={styles.actionGroup} data-hero-actions>
     <div className={styles.actions} data-hero-action-exit>
-      <a className={styles.primary} href="#precos" data-conversion="view_plans">Ver planos de sites <span aria-hidden="true">→</span></a>
-      <a className={styles.secondary} href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="hero">Conversar sobre meu projeto</a>
+      <ProblemFlowTrigger className={styles.primary}>Contar meu problema <span aria-hidden="true">→</span></ProblemFlowTrigger>
+      <a className={styles.secondary} href="#projetos">Ver projetos</a>
     </div>
   </div>;
 }

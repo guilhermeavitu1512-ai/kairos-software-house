@@ -8,7 +8,7 @@ export default function ContactPage() {
     <p className={styles.label}>ATENDIMENTO DIRETO PELO WHATSAPP</p><h1>O que você quer criar ou melhorar?</h1>
     <p>Conte um pouco sobre sua empresa e o que precisa. Pode ser um site novo, uma ideia de aplicativo ou uma tarefa que dá trabalho todos os dias.</p>
     <p>Você não precisa chegar com uma lista de funcionalidades. A conversa serve para entender o projeto e definir o que entra na proposta.</p>
-    <div className={styles.pageActions}><a className="button" href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="contact">Conversar no WhatsApp →</a><ProblemFlowTrigger className={styles.link}>Prefiro preparar um resumo →</ProblemFlowTrigger></div>
+    <div className={styles.pageActions}><ProblemFlowTrigger className="button">Contar meu problema →</ProblemFlowTrigger><a className={styles.link} href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="contact">Prefiro ir direto ao WhatsApp ↗</a></div>
     <p>Ao escolher o resumo, você responde três perguntas e confere a mensagem antes de enviá-la no WhatsApp.</p>
   </div></section></main>;
 }

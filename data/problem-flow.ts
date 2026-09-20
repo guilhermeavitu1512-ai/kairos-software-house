@@ -5,6 +5,7 @@ export const QUESTIONS = ["O que você quer criar ou melhorar?", "Que tipo de ne
 export type CurrentProcess = typeof CURRENT_PROCESSES[number];
 export type Goal = typeof GOALS[number];
 export type ProblemAnswers = {
+  interest: string;
   problem: string;
   business: typeof BUSINESS_TYPES[number] | "";
   otherBusiness: string;
@@ -16,7 +17,7 @@ export type ProblemAnswers = {
   email: string;
   company: string;
 };
-export const EMPTY_PROBLEM: ProblemAnswers = { problem: "", business: "", otherBusiness: "", current: [], goals: [], otherGoal: "", name: "", whatsapp: "", email: "", company: "" };
+export const EMPTY_PROBLEM: ProblemAnswers = { interest: "", problem: "", business: "", otherBusiness: "", current: [], goals: [], otherGoal: "", name: "", whatsapp: "", email: "", company: "" };
 
 export function toggleSelection<T extends string>(values: T[], value: T, exclusive: T): T[] {
   if (values.includes(value)) return values.filter(item => item !== value);
@@ -54,6 +55,7 @@ export const goalsLabel = (a: ProblemAnswers) => a.goals.map(goal => goal === "O
 export function buildProblemMessage(a: ProblemAnswers) {
   return [
     "Olá! Conheci a KAIROS pelo site e queria conversar sobre um projeto.",
+    a.interest ? `Interesse: ${a.interest}` : "",
     `O que preciso:\n${a.problem.trim()}`,
     `Tipo de negócio:\n${businessLabel(a)}`,
     `Nome: ${a.name.trim()}`,

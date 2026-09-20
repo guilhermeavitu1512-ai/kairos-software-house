@@ -9,13 +9,13 @@ import { buildWhatsAppUrl } from "@/lib/constants";
 import { trackConversion } from "@/lib/conversion";
 import styles from "./ProblemFlow.module.css";
 
-const FlowContext = createContext<(() => void) | null>(null);
-export function ProblemFlowTrigger({ children, onClick, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+const FlowContext = createContext<((subject?: string) => void) | null>(null);
+export function ProblemFlowTrigger({ children, onClick, subject, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { subject?: string }) {
   const open = useContext(FlowContext);
   return <Link {...props} href="/#briefing" onClick={event => {
     onClick?.(event);
     if (!open || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault(); open();
+    event.preventDefault(); open(subject);
   }}>{children}</Link>;
 }
 
@@ -30,7 +30,7 @@ export default function ProblemFlowProvider({ children }: { children: ReactNode 
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState("");
 
-  function open() { trackConversion("form_start"); origin.current = document.activeElement as HTMLElement | null; setOpened(true); }
+  function open(subject?: string) { setAnswers(current => ({ ...current, interest: subject || "" })); trackConversion("form_start"); origin.current = document.activeElement as HTMLElement | null; setOpened(true); }
   function close() { setOpened(false); }
   useEffect(() => {
     const openHash = () => { if (location.hash === "#briefing") setOpened(true); };
@@ -82,6 +82,7 @@ export default function ProblemFlowProvider({ children }: { children: ReactNode 
         <p className={styles.hint}>Prepare um resumo em três etapas ou <a href={buildWhatsAppUrl()} data-conversion="whatsapp_open" data-source="form_direct" target="_blank" rel="noopener noreferrer">converse direto no WhatsApp</a>.</p>
         <p className={styles.progress}>{reviewing ? "Revisão" : `Pergunta ${step + 1} de 3`}</p>
         <h2 id="problem-flow-title" ref={heading} tabIndex={-1}>{reviewing ? "Confira seu resumo" : QUESTIONS[step]}</h2>
+        {answers.interest && <p className={styles.hint}>Interesse: {answers.interest}</p>}
         <div key={reviewing ? "review" : step} className={styles.step}>
           {reviewing ? <><ProblemReview answers={answers} edit={edit} /><button className={styles.textButton} type="button" onClick={back}>← Voltar</button></> : <form onSubmit={continueFlow} noValidate>
             {step === 0 && <ProblemStep {...props} />}

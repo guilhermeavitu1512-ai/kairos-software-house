@@ -24,7 +24,7 @@ export default function VyneCase({ project }: { project: Project }) {
 
           <div className="vyne-case-intro">
             <div>
-              <span className="vyne-case-kicker">Catálogo de relógios</span>
+              <span className="vyne-case-kicker">Projeto autoral · KAIROS Lab</span>
               <h1>{project.name}</h1>
             </div>
             <div className="vyne-case-intro-copy">
@@ -53,7 +53,7 @@ export default function VyneCase({ project }: { project: Project }) {
       <section className="vyne-case-challenge">
         <div className="section-shell vyne-case-challenge-grid">
           <Reveal className="vyne-case-section-index">
-            <p>Contexto e desafio</p>
+            <p>Problema</p>
           </Reveal>
           <Reveal className="vyne-case-challenge-copy">
             <p className="vyne-case-lead">O projeto reúne modelos de diferentes marcas em um catálogo que pode ser filtrado.</p>
@@ -70,7 +70,7 @@ export default function VyneCase({ project }: { project: Project }) {
       <section className="vyne-case-strategy">
         <div className="section-shell">
           <Reveal className="vyne-case-section-head">
-            <span>Estratégia</span>
+            <span>Decisão</span>
             <h2>Fotos e especificações<br />para comparar modelos.</h2>
           </Reveal>
 
@@ -88,7 +88,7 @@ export default function VyneCase({ project }: { project: Project }) {
       <section className="vyne-case-direction">
         <div className="section-shell vyne-case-direction-grid">
           <Reveal className="vyne-case-direction-copy">
-            <span>Direção visual</span>
+            <span>Solução</span>
             <h2>Fundo escuro, fotos grandes e destaques em verde.</h2>
             <p>O verde destaca ações e informações sobre o fundo preto. As fotos têm espaço próprio, ao lado dos dados de cada relógio.</p>
           </Reveal>

@@ -34,3 +34,5 @@ test('review edits preserve answers and WhatsApp copy has no budget or fake send
 });
 
 test("contact can omit phone but validates a provided number",()=>{assert.equal(validateProblemStep(2,{...complete,whatsapp:""}),"");assert.match(validateProblemStep(2,{...complete,whatsapp:"123"}),/WhatsApp/);});
+
+test("plan context survives into the WhatsApp summary",()=>{assert.match(buildProblemMessage({...complete,interest:"Site Business — R$ 697"}),/Interesse: Site Business — R\$ 697/);});

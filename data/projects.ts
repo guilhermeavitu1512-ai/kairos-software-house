@@ -68,7 +68,7 @@ export const projectRecords: ProjectRecord[] = [
     category: "Site institucional",
     description: "Nosso próprio site: apresentação de serviços, comparação de planos e contato pelo WhatsApp.",
     image: "/portfolio/kairos-current.png",
-    url: "/#inicio",
+    url: "/projetos/kairos",
     featured: false,
     portfolio: true,
     order: 2,

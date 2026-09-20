@@ -131,3 +131,6 @@
 .terms strong { color:#e2e8f0; font-weight:500; }
 .terms a { display:inline-flex; align-items:center; min-height:44px; color:#b6d4ff; text-decoration:underline; text-underline-offset:5px; }
 .choose { font-size:14px; }
+
+.scope { color:var(--plan-light,#c3d5ef); font-size:14px; line-height:1.65; margin:0 0 16px; font-weight:500; }
+.section { scroll-margin-top:88px; }

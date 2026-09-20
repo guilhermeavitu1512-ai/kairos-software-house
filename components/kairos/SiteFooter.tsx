@@ -18,7 +18,7 @@ export default function SiteFooter() {
         </nav>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} KAIROS · Sites, sistemas e automações</span>
+        <span>© {new Date().getFullYear()} KAIROS · Sites · Sistemas · Apps · Automações</span>
         <a href="#conteudo">Voltar ao topo ↑</a>
       </div>
     </footer>

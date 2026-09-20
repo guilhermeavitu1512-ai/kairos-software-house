@@ -15,7 +15,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "KAIROS",
-    description: "Criação de sites, sistemas e automações para empresas.",
+    description: "Sites, sistemas, apps e automações para empresas.",
   };
 
   return (

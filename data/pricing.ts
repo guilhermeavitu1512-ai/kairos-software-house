@@ -1,7 +1,7 @@
 export const sitePlans = [
   {
     id: "essencial", name: "Site Essencial", cta: "Conversar sobre o Essencial",
-    installment: "39,70", upfront: "397", pages: "1 página completa", revisions: "1 rodada de revisões", delivery: "5 a 7 dias úteis",
+    installment: "39,70", upfront: "397", pages: "Até 1 página completa (landing page)", revisions: "1 rodada de revisões", delivery: "5 a 7 dias úteis",
     description: "Seus serviços e contato reunidos em uma única página.",
     features: ["Até 1 página completa (landing page)", "1 rodada de revisões", "Layout para computador e celular"],
   },
