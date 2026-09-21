@@ -12,12 +12,12 @@ export type LabProject = {
 export const labProjects: LabProject[] = [
   {
     slug: "barbearia-tony",
-    name: "Barbearia Tony",
+    name: "Tony Barber",
     kind: "Projeto autoral",
     category: "Sistema para barbearias",
-    description: "Uma exploração de agenda e operação em uma mesma experiência.",
+    description: "Site e sistema de agendamento para barbearias, desenvolvido como projeto autoral da KAIROS.",
     theme: "tony",
-    image: null,
+    image: { src: "/portfolio/tony/home-1440.png", alt: "Página inicial da Tony Barber", width: 1440, height: 1000 },
   },
   {
     slug: "seu-sorriso",

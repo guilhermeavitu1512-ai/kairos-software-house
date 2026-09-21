@@ -62,6 +62,12 @@ export const projectRecords: ProjectRecord[] = [
     accent: "#d7ff38",
   },
   {
+    id: "tony", slug: "barbearia-tony", name: "Tony Barber", category: "Sistema de agendamento",
+    description: "Site e agendamento para barbearias, com escolha de profissional, serviços e horários. Projeto autoral da KAIROS.",
+    image: "/portfolio/tony/home-1440.png", url: "/projetos/barbearia-tony",
+    featured: false, portfolio: true, order: 2,
+  },
+  {
     id: "kairos",
     slug: "kairos",
     name: "KAIROS",
@@ -71,7 +77,7 @@ export const projectRecords: ProjectRecord[] = [
     url: "/projetos/kairos",
     featured: false,
     portfolio: true,
-    order: 2,
+    order: 3,
   },
 ];
 
