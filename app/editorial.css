@@ -74,3 +74,7 @@ body { letter-spacing: -.005em; }
   .vyne-case-principle p { grid-column: 1; }
   .vyne-case-decision { grid-template-columns: 1fr; }
 }
+
+.vyne-case-open-site { display:inline-flex; align-items:center; gap:32px; min-height:48px; margin:24px 0; padding:14px 22px; border-radius:6px; background:#c5f36c; color:#11180a; font-size:14px; font-weight:600; }
+.vyne-case-open-site:hover { background:#d7ff8d; }
+.vyne-case-open-site:focus-visible { outline:2px solid #c5f36c; outline-offset:5px; }

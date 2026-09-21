@@ -49,3 +49,7 @@
 .portfolioCard p { color:#a8b4c5; line-height:1.7; font-size:16px; }
 .portfolioCard .link { color:#b6d4ff; }
 @media(max-width:760px) { .portfolioGrid { grid-template-columns:1fr; gap:48px; padding-bottom:64px; } }
+
+.visitProject { display:flex; align-items:center; justify-content:space-between; width:fit-content; gap:32px; min-height:48px; padding:12px 20px; margin:24px 0 12px; border:1px solid #98bced; border-radius:6px; color:#e5efff; background:#14243b; font-size:14px; font-weight:500; }
+.visitProject:hover { background:#203856; }
+.visitProject:focus-visible { outline:2px solid #b6d4ff; outline-offset:4px; }

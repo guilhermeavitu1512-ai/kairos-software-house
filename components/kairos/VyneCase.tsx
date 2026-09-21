@@ -29,6 +29,7 @@ export default function VyneCase({ project }: { project: Project }) {
             </div>
             <div className="vyne-case-intro-copy">
               <p>Um catálogo de relógios com busca, filtros, favoritos e detalhes de cada modelo.</p>
+              <a className="vyne-case-open-site" href="https://vyne-relogios.vercel.app/" target="_blank" rel="noopener noreferrer">Abrir site VYNE <span aria-hidden="true">↗</span></a>
               <dl>
                 <div><dt>Ano</dt><dd>{project.year}</dd></div>
                 <div><dt>Categoria</dt><dd>{project.category}</dd></div>
