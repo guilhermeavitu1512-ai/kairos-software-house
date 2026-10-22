@@ -6,7 +6,7 @@ import styles from "./HeroLive.module.css";
 
 // Real screenshots of KAIROS projects, scrolled like a visit.
 const scenes = [
-  { id: "blend", label: "Cardápio", project: "Blend Burger", url: null, duration: 8000, mobile: "/portfolio/blend/home-390.png",
+  { id: "blend", label: "Cardápio", project: "Blend Burger", url: "https://blend-burger-mocha.vercel.app/", duration: 8000, mobile: "/portfolio/blend/home-390.png",
     frames: ["/portfolio/blend/home-1440.png", "/portfolio/blend/destaques-1440.png", "/portfolio/blend/sobre-1440.png"] },
   { id: "tony", label: "Agendamento", project: "Tony Barber", url: "https://tonybarber.vercel.app/", duration: 8000, mobile: "/portfolio/tony/agenda-horario-390.png",
     frames: ["/portfolio/tony/home-hd.png", "/portfolio/tony/agenda-servicos.png", "/portfolio/tony/agenda-horario.png"] },
@@ -68,9 +68,7 @@ export default function HeroDemo() {
     <div className={styles.window}>
       <div className={styles.chrome}>
         <span className={styles.dots} aria-hidden="true"><i /><i /><i /></span>
-        {scene.url
-          ? <a className={styles.url} href={scene.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir o site ${scene.project} em nova aba`}><Lock />{new URL(scene.url).host}<span aria-hidden="true">↗</span></a>
-          : <span className={styles.url}><Lock />{scene.project} · projeto KAIROS</span>}
+        <a className={styles.url} href={scene.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir o site ${scene.project} em nova aba`}><Lock />{new URL(scene.url).host}<span aria-hidden="true">↗</span></a>
       </div>
       <div className={styles.tabs} role="tablist" aria-label="Projetos da KAIROS">
         {scenes.map((item, index) => <button key={item.id} ref={node => { tabs.current[index] = node; }} type="button" role="tab" id={`hero-demo-tab-${item.id}`} aria-selected={active === index} aria-controls="hero-demo-panel" tabIndex={active === index ? 0 : -1} onClick={() => setActive(index)} onKeyDown={event => navigate(event, index)}>
