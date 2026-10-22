@@ -49,7 +49,7 @@ export default function ProblemFlowProvider({ children }: { children: ReactNode 
       if (location.hash === "#briefing") history.replaceState(history.state, "", location.pathname + location.search);
       const target = origin.current;
       if (target?.isConnected && target.getClientRects().length) target.focus({ preventScroll: true });
-      else document.querySelector<HTMLElement>('.menu-toggle')?.focus({ preventScroll: true });
+      else document.querySelector<HTMLElement>('[data-menu-toggle]')?.focus({ preventScroll: true });
     };
   }, [opened]);
   useEffect(() => {

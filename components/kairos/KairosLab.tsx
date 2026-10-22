@@ -8,7 +8,11 @@ export default function KairosLab({ priority = false }: { priority?: boolean }) 
     <header className={styles.intro}><div className={styles.shell}><h2 id="lab-title">Veja o trabalho na prática.</h2><p>Telas e funcionalidades de projetos desenvolvidos pela KAIROS. Veja os detalhes para avaliar o que faz sentido para o seu negócio.</p></div></header>
     <div className={`${styles.shell} ${styles.portfolioGrid}`}>
       {portfolioProjects.map(project=><article key={project.id} className={styles.portfolioCard}>
-        <Link href={project.url} aria-label={`Ver projeto ${project.name}`} className={styles.portfolioImage}><Image src={project.image} alt={`Página do projeto ${project.name}`} width={1440} height={1000} priority={priority} sizes="(max-width:760px) calc(100vw - 40px), 600px" /></Link>
+        <Link href={project.url} aria-label={`Ver projeto ${project.name}`} className={styles.portfolioImage} data-spotlight>
+          <span className={styles.frameBar} aria-hidden="true"><span className={styles.frameDots}><i /><i /><i /></span><span className={styles.frameUrl}>{project.liveUrl ? new URL(project.liveUrl).host : project.name}</span></span>
+          <span className={styles.frameShot}><Image src={project.image} alt={`Página do projeto ${project.name}`} width={1440} height={1000} priority={priority} sizes="(max-width:760px) calc(100vw - 40px), 600px" /></span>
+          <span className={styles.frameHint} aria-hidden="true">Ver projeto →</span>
+        </Link>
         <p className={styles.portfolioType}>{project.category.toUpperCase()} · PROJETO AUTORAL</p>
         <h3>{project.name}</h3><p>{project.description}</p>
         {project.highlights && <ul className={styles.highlights}>{project.highlights.map(item=><li key={item}>{item}</li>)}</ul>}

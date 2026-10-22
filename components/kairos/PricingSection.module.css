@@ -50,6 +50,8 @@
 .plan:focus-within .price strong{color:var(--plan-light);transform:translateY(-2px)}
 @media(hover:hover){.plan:hover{transform:translateY(-5px);border-color:var(--plan-accent);background:var(--plan-hover)}.plan:hover .price strong{color:var(--plan-light);transform:translateY(-2px)}}
 @media(prefers-reduced-motion:reduce){.plan,.price strong{transition:none!important;transform:none!important}.plan:hover .price strong,.plan:focus-within .price strong{transform:none}}
+.plan::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, -200px), rgba(18,107,255,.13), transparent 60%); opacity: 0; transition: opacity 300ms ease-out; pointer-events: none; }
+@media(hover:hover) { .plan:hover::after { opacity: 1; } }
 .badge { position: absolute; top: 0; left: 20px; transform: translateY(-50%); margin: 0; padding: 4px 12px; border-radius: 999px; background: #126bff; color: #f5f7fa; font-size: 12px; font-weight: 600; letter-spacing: .02em; line-height: 1.5; }
 .plan h3 { margin: 0; font-size: 21px; font-weight: 500; letter-spacing: -.02em; line-height: 1.3; color: #f5f7fa; }
 .price { margin: 32px 0 0; font-variant-numeric: tabular-nums; }

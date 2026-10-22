@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 import Hero from "@/components/kairos/Hero";
 import ProblemCards from "@/components/kairos/ProblemCards";
+import Spotlight from "@/components/kairos/Spotlight";
 import KairosLab from "@/components/kairos/KairosLab";
 import FinalContact from "@/components/kairos/problem-flow/FinalContact";
 import ServicesSection from "@/components/kairos/ServicesSection";
@@ -20,6 +21,7 @@ export default function Home() {
 
   return (
     <main id="conteudo">
+      <Spotlight />
       <OpeningTransition>
         <Hero />
       </OpeningTransition>

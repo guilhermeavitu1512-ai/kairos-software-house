@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import KairosMark from "./KairosMark";
 import { ProblemFlowTrigger } from "./problem-flow/ProblemFlow";
+import styles from "./SiteHeader.module.css";
 
 const links = [
   { label: "Projetos", href: "/#projetos" },
@@ -12,6 +13,8 @@ const links = [
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ];
+
+const Arrow = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>;
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -47,18 +50,19 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className={`site-header${scrolled || menuOpen ? " is-scrolled" : ""}`}>
-        <Link className="brand" href="/" aria-label="KAIROS, ir para o início">
+      <header className={`${styles.header}${scrolled || menuOpen ? " " + styles.scrolled : ""}`}>
+        <Link className={styles.brand} href="/" aria-label="KAIROS, ir para o início">
           <KairosMark compact priority />
           <span>KAIROS</span>
         </Link>
-        <nav className="desktop-nav" aria-label="Navegação principal">
+        <nav className={styles.nav} aria-label="Navegação principal">
           {links.map((link) => <Link key={link.label} href={link.href}>{link.label}</Link>)}
         </nav>
-        <ProblemFlowTrigger className="header-cta">Pedir orçamento</ProblemFlowTrigger>
+        <ProblemFlowTrigger className={styles.cta}>Pedir orçamento <Arrow /></ProblemFlowTrigger>
         <button
           ref={toggleRef}
-          className={`menu-toggle${menuOpen ? " is-open" : ""}`}
+          className={`${styles.toggle}${menuOpen ? " " + styles.toggleOpen : ""}`}
+          data-menu-toggle
           type="button"
           aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menuOpen}
@@ -68,13 +72,13 @@ export default function SiteHeader() {
           <span /><span />
         </button>
       </header>
-      <nav id="mobile-navigation" className={`mobile-menu${menuOpen ? " is-open" : ""}`} aria-hidden={!menuOpen}>
-        {links.map((link) => (
-          <Link key={link.label} href={link.href} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>
-            {link.label}
+      <nav id="mobile-navigation" className={`${styles.mobile}${menuOpen ? " " + styles.mobileOpen : ""}`} aria-hidden={!menuOpen}>
+        {links.map((link, index) => (
+          <Link key={link.label} href={link.href} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1} style={{ transitionDelay: menuOpen ? `${60 + index * 40}ms` : "0ms" }}>
+            <span className={styles.mobileIndex}>0{index + 1}</span>{link.label}
           </Link>
         ))}
-        <ProblemFlowTrigger onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>Pedir orçamento</ProblemFlowTrigger>
+        <ProblemFlowTrigger className={styles.mobileCta} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>Pedir orçamento <Arrow /></ProblemFlowTrigger>
       </nav>
     </>
   );

@@ -11,7 +11,7 @@ export default function PricingSection() {
       </header>
 
       <div className={styles.plans}>
-        {sitePlans.map(plan => <article key={plan.id} data-plan={plan.id} className={styles.plan + ("recommended" in plan ? " " + styles.featured : "")} aria-labelledby={"plan-" + plan.id}>
+        {sitePlans.map(plan => <article key={plan.id} data-plan={plan.id} className={styles.plan + ("recommended" in plan ? " " + styles.featured : "")} data-spotlight aria-labelledby={"plan-" + plan.id}>
           {"recommended" in plan && <p className={styles.badge}>Recomendado</p>}
           <h3 id={"plan-" + plan.id}>{plan.name}</h3>
           <p className={styles.price}>

@@ -1,0 +1,39 @@
+/* Floating "island" header: transparent over the hero, glass once scrolled. */
+.header { position: fixed; z-index: 100; top: 14px; left: 50%; display: flex; align-items: center; gap: 16px; width: min(1180px, calc(100% - 32px)); height: 60px; padding: 0 8px 0 18px; border: 1px solid rgba(166,193,229,.1); border-radius: 999px; background: rgba(6,14,28,.42); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); transform: translateX(-50%); transition: background-color 300ms ease-out, border-color 300ms ease-out, box-shadow 300ms ease-out, top 300ms ease-out; }
+.scrolled { top: 10px; border-color: rgba(166,193,229,.18); background: rgba(5,12,24,.86); box-shadow: 0 14px 40px rgba(0,0,0,.35); }
+.brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; color: #f5f7fa; font-size: 13px; font-weight: 700; letter-spacing: .2em; }
+.brand :global(.kairos-mark--compact) { position: relative; display: block; width: 30px; height: 30px; }
+.nav { display: flex; gap: 2px; margin-inline: auto; }
+.nav a { padding: 9px 14px; border-radius: 999px; color: #aab5c4; font-size: 14px; font-weight: 500; transition: color 180ms ease-out, background-color 180ms ease-out; }
+.nav a:hover { color: #fff; background: rgba(255,255,255,.07); }
+.cta { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; height: 44px; padding: 0 18px 0 20px; border-radius: 999px; background: #126bff; color: #fff; font-size: 14px; font-weight: 600; box-shadow: inset 0 1px rgba(255,255,255,.22), 0 6px 22px rgba(18,107,255,.35); transition: background-color 180ms ease-out, box-shadow 180ms ease-out; }
+.cta svg { transition: transform 180ms ease-out; }
+.cta:hover { background: #2478ff; box-shadow: inset 0 1px rgba(255,255,255,.22), 0 8px 28px rgba(18,107,255,.5); }
+.cta:hover svg { transform: translateX(3px); }
+.nav a:focus-visible, .cta:focus-visible, .brand:focus-visible, .toggle:focus-visible { outline: 2px solid #aacaff; outline-offset: 3px; }
+.toggle { display: none; position: relative; width: 44px; height: 44px; flex-shrink: 0; border: 0; border-radius: 999px; background: rgba(255,255,255,.06); }
+.toggle span { position: absolute; left: 13px; width: 18px; height: 1.5px; border-radius: 2px; background: #f5f7fa; transition: transform 220ms ease-out, top 220ms ease-out; }
+.toggle span:first-child { top: 18px; }
+.toggle span:last-child { top: 25px; }
+.toggleOpen span:first-child { top: 21.5px; transform: rotate(45deg); }
+.toggleOpen span:last-child { top: 21.5px; transform: rotate(-45deg); }
+.mobile { position: fixed; z-index: 99; inset: 0; display: flex; flex-direction: column; padding: 104px 24px 32px; background: radial-gradient(120% 60% at 50% 0%, #0b2149 0%, #030914 60%); opacity: 0; visibility: hidden; transition: opacity 240ms ease-out, visibility 0s linear 240ms; }
+.mobileOpen { opacity: 1; visibility: visible; transition: opacity 240ms ease-out; }
+.mobile a:not(.mobileCta) { display: flex; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(166,193,229,.12); color: #f5f7fa; font-size: 32px; font-weight: 600; letter-spacing: -.03em; opacity: 0; transform: translateY(10px); transition: opacity 260ms ease-out, transform 260ms ease-out; }
+.mobileOpen a:not(.mobileCta) { opacity: 1; transform: none; }
+.mobileIndex { color: #6f9fe6; font-size: 12px; font-weight: 500; letter-spacing: 0; }
+.mobileCta { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; margin-top: auto; border-radius: 999px; background: #126bff; color: #fff; font-size: 17px; font-weight: 600; }
+@media (max-width: 960px) {
+  .nav { display: none; }
+  .cta { margin-left: auto; }
+  .toggle { display: block; }
+}
+@media (max-width: 760px) {
+  .header { top: 10px; width: calc(100% - 20px); height: 56px; padding: 0 6px 0 14px; gap: 8px; }
+  .cta { height: 40px; padding: 0 14px; font-size: 13px; }
+  .cta svg { display: none; }
+}
+@media (max-width: 360px) { .cta { display: none; } .toggle { margin-left: auto; } }
+@media (prefers-reduced-motion: reduce) {
+  .header, .nav a, .cta, .cta svg, .toggle span, .mobile, .mobile a { transition: none !important; }
+}
