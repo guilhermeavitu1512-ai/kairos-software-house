@@ -39,10 +39,10 @@ export default function VyneCase({ project }: { project: Project }) {
 
           <Reveal className="vyne-case-hero-media" variant="media">
             <Image
-              src="/portfolio/vyne/hero-desktop.png"
+              src="/portfolio/vyne/home-hd.png"
               alt="Página inicial do VYNE em desktop"
-              width={1425}
-              height={990}
+              width={1440}
+              height={900}
               priority
               loading="eager"
               sizes="(max-width: 760px) 100vw, 1440px"
@@ -117,10 +117,10 @@ export default function VyneCase({ project }: { project: Project }) {
 
           <Reveal className="vyne-case-screen vyne-case-screen--wide" variant="media">
             <Image
-              src="/portfolio/vyne/catalog-desktop.png"
+              src="/portfolio/vyne/catalogo-hd.png"
               alt="Catálogo VYNE com busca e filtros por marca e mecanismo"
-              width={1425}
-              height={990}
+              width={1440}
+              height={900}
               sizes="(max-width: 760px) 100vw, 1440px"
             />
             <figcaption><span>Descoberta</span> Busca, filtros e comparação em uma única tela.</figcaption>
@@ -128,10 +128,10 @@ export default function VyneCase({ project }: { project: Project }) {
 
           <Reveal className="vyne-case-screen vyne-case-screen--recommended" variant="media">
             <Image
-              src="/portfolio/vyne/recommended-desktop.png"
+              src="/portfolio/vyne/recomendados-hd.png"
               alt="Seleção de relógios recomendados pelo VYNE"
-              width={1265}
-              height={712}
+              width={1440}
+              height={900}
               sizes="(max-width: 760px) 100vw, 1440px"
             />
             <figcaption><span>Curadoria</span> Uma seleção reduzida apresenta os modelos antes do catálogo completo.</figcaption>
@@ -188,10 +188,10 @@ export default function VyneCase({ project }: { project: Project }) {
           </Reveal>
           <div className="vyne-case-responsive-stage">
             <Reveal className="vyne-case-device vyne-case-device--desktop" variant="media">
-              <Image src="/portfolio/vyne/hero-desktop.png" alt="Experiência VYNE em desktop" width={1425} height={990} sizes="(max-width: 760px) 100vw, 70vw" />
+              <Image src="/portfolio/vyne/home-hd.png" alt="Experiência VYNE em desktop" width={1440} height={900} sizes="(max-width: 760px) 100vw, 70vw" />
             </Reveal>
             <Reveal className="vyne-case-device vyne-case-device--mobile" variant="media">
-              <Image src="/portfolio/vyne/hero-mobile.png" alt="Experiência VYNE em mobile" width={375} height={811} sizes="(max-width: 760px) 44vw, 260px" />
+              <Image src="/portfolio/vyne/home-390.png" alt="Experiência VYNE em mobile" width={780} height={1688} sizes="(max-width: 760px) 44vw, 260px" />
             </Reveal>
           </div>
         </div>

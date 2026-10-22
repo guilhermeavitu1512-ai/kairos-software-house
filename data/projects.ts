@@ -42,7 +42,7 @@ export const projectRecords: ProjectRecord[] = [
     name: "VYNE",
     category: "E-commerce",
     description: "Catálogo de relógios com filtros, favoritos e detalhes de produto. Veja as telas e os recursos desenvolvidos.",
-    image: "/portfolio/vyne/hero-desktop.png",
+    image: "/portfolio/vyne/home-hd.png",
     url: "/projetos/vyne",
     liveUrl: "https://vyne-relogios.vercel.app/",
     highlights: ["Catálogo com filtros e favoritos", "Página de detalhes para cada produto", "Layout para computador e celular"],
@@ -68,7 +68,7 @@ export const projectRecords: ProjectRecord[] = [
   {
     id: "tony", slug: "barbearia-tony", name: "Tony Barber", category: "Sistema de agendamento",
     description: "Site e agendamento para barbearias, com escolha de profissional, serviços e horários. Projeto autoral da KAIROS.",
-    image: "/portfolio/tony/home-1440.png", url: "/projetos/barbearia-tony", liveUrl: "https://tonybarber.vercel.app/",
+    image: "/portfolio/tony/home-hd.png", url: "/projetos/barbearia-tony", liveUrl: "https://tonybarber.vercel.app/",
     highlights: ["Agendamento em etapas: profissional, serviço, horário e dados", "Site de apresentação ligado à agenda", "React, TypeScript e Firebase"],
     featured: false, portfolio: true, order: 2,
   },

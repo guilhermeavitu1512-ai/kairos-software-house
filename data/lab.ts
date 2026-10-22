@@ -17,7 +17,7 @@ export const labProjects: LabProject[] = [
     category: "Sistema para barbearias",
     description: "Site e sistema de agendamento para barbearias, desenvolvido como projeto autoral da KAIROS.",
     theme: "tony",
-    image: { src: "/portfolio/tony/home-1440.png", alt: "Página inicial da Tony Barber", width: 1440, height: 1000 },
+    image: { src: "/portfolio/tony/home-hd.png", alt: "Página inicial da Tony Barber", width: 1440, height: 900 },
   },
   {
     slug: "seu-sorriso",

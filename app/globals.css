@@ -271,7 +271,7 @@ body{font-weight:400;letter-spacing:-.012em}.section{padding:clamp(120px,11vw,17
 @media (prefers-reduced-motion:reduce){
   .vyne-case-back,.vyne-case-close i,.vyne-case-live-link span{transition:none}
   .vyne-case-motion video{display:none}
-  .vyne-case-motion{min-height:360px;background:#030604 url('/portfolio/vyne/hero-desktop.png') center/cover no-repeat}
+  .vyne-case-motion{min-height:360px;background:#030604 url('/portfolio/vyne/home-hd.png') center/cover no-repeat}
 }
 
 /* Stage 1 — hero, typography and motion system */

@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: `/projetos/${project.slug}` },
-    openGraph: { title, description, type: "article", images: project.slug === "vyne" ? [{ url: "/portfolio/vyne/hero-desktop.png", width: 1425, height: 990, alt: "Experiência digital VYNE" }] : [] },
-    twitter: { card: "summary_large_image", title, description, images: project.slug === "vyne" ? ["/portfolio/vyne/hero-desktop.png"] : [] },
+    openGraph: { title, description, type: "article", images: project.slug === "vyne" ? [{ url: "/portfolio/vyne/home-hd.png", width: 1440, height: 900, alt: "Experiência digital VYNE" }] : [] },
+    twitter: { card: "summary_large_image", title, description, images: project.slug === "vyne" ? ["/portfolio/vyne/home-hd.png"] : [] },
   };
 }
 
