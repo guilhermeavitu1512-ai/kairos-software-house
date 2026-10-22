@@ -73,6 +73,13 @@ export const projectRecords: ProjectRecord[] = [
     featured: false, portfolio: true, order: 2,
   },
   {
+    id: "blend", slug: "blend-burger", name: "Blend Burger", category: "Cardápio digital",
+    description: "Site e cardápio digital para hamburgueria, com vitrine dos burgers, ingredientes e pedido online. Projeto autoral da KAIROS.",
+    image: "/portfolio/blend/home-1440.png", url: "/projetos/blend-burger",
+    highlights: ["Vitrine com destaque rotativo e fotos em alta", "Ingredientes apresentados camada por camada", "Pedido com delivery, retirada e busca de CEP"],
+    featured: false, portfolio: true, order: 0,
+  },
+  {
     id: "kairos",
     slug: "kairos",
     name: "KAIROS",
