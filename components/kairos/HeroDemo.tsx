@@ -1,34 +1,27 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import styles from "./HeroLive.module.css";
 
 const scenes = [
-  { id: "site", label: "Site", url: "seunegocio.com.br" },
-  { id: "agenda", label: "Agenda", url: "seunegocio.com.br/agendar" },
-  { id: "bot", label: "Automação", url: "painel · automações" },
+  { id: "site", label: "Site", url: "Blend Burger · projeto KAIROS", duration: 8000 },
+  { id: "agenda", label: "Agenda", url: "seunegocio.com.br/agendar", duration: 5200 },
+  { id: "bot", label: "Automação", url: "painel · automações", duration: 5200 },
 ] as const;
-const INTERVAL = 5200;
+const blendFrames = ["/portfolio/blend/home-1440.png", "/portfolio/blend/destaques-1440.png", "/portfolio/blend/sobre-1440.png"];
 
-const Chat = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z" /></svg>;
 const Phone = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5" /><path d="M11 18h2" /></svg>;
 const Bolt = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" /></svg>;
 const Check = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>;
 
+// Real screenshots of Blend Burger, a KAIROS project, scrolled like a visit.
 function SiteScene() {
-  return <div className={styles.scene}>
-    <div className={styles.siteNav}><span className={styles.siteLogo} /><i /><i /><i /><b>Agendar</b></div>
-    <div className={styles.siteHero}>
-      <div>
-        <span className={styles.siteTag}>Aberto hoje até 20h</span>
-        <p className={styles.siteTitle}>Corte, barba e cuidado no seu horário.</p>
-        <span className={styles.siteLine} /><span className={styles.siteLine} style={{ width: "62%" }} />
-        <span className={styles.siteButton}>Agendar pelo WhatsApp</span>
-      </div>
-      <div className={styles.sitePhoto} />
+  return <div className={styles.realSite}>
+    <div className={styles.realTrack}>
+      {blendFrames.map((src, i) => <Image key={src} src={src} alt="" width={1440} height={900} sizes="(max-width:1000px) 90vw, 600px" priority={i === 0} />)}
     </div>
-    <div className={styles.siteCards}>{["Corte", "Barba", "Combo"].map((name, i) => <div key={name} style={{ animationDelay: `${300 + i * 120}ms` }}><span />{name}<small>a partir de R$ {35 + i * 15}</small></div>)}</div>
-    <div className={`${styles.toast} ${styles.toastLate}`}><span className={styles.toastIcon}><Chat /></span><div><b>Nova mensagem</b><small>“Oi! Tem horário hoje às 18h?”</small></div></div>
+    <div className={styles.realMobile}><Image src="/portfolio/blend/home-390.png" alt="" width={780} height={1688} sizes="(max-width:760px) 90vw, 1px" /></div>
   </div>;
 }
 
@@ -92,7 +85,7 @@ export default function HeroDemo() {
   const running = autoplay && !paused;
   useEffect(() => {
     if (!running) return;
-    const timer = window.setTimeout(() => setActive(current => (current + 1) % scenes.length), INTERVAL);
+    const timer = window.setTimeout(() => setActive(current => (current + 1) % scenes.length), scenes[active].duration);
     return () => window.clearTimeout(timer);
   }, [running, active]);
 
@@ -103,7 +96,7 @@ export default function HeroDemo() {
   }
 
   const scene = scenes[active];
-  return <div ref={root} className={styles.demo} data-running={running || undefined} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
+  return <div ref={root} className={styles.demo} data-running={running || undefined} data-scene={scene.id} style={{ "--scene-duration": `${scene.duration}ms` } as CSSProperties} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
     <div className={styles.window}>
       <div className={styles.chrome}>
         <span className={styles.dots} aria-hidden="true"><i /><i /><i /></span>
@@ -120,8 +113,9 @@ export default function HeroDemo() {
         </div>
       </div>
     </div>
+    {scene.id === "site" && <div key="phone" className={styles.phone} aria-hidden="true"><Image src="/portfolio/blend/home-390.png" alt="" width={780} height={1688} sizes="170px" /></div>}
     <div className={`${styles.badge} ${styles.badgeTop}`} aria-hidden="true"><span><Phone /></span>Pronto para celular</div>
     <div className={`${styles.badge} ${styles.badgeBottom}`} aria-hidden="true"><span><Bolt /></span>Integra com WhatsApp</div>
-    <p className={styles.caption}>Demonstração ilustrativa</p>
+    <p className={styles.caption}>{scene.id === "site" ? "Blend Burger: projeto autoral da KAIROS" : "Demonstração ilustrativa"}</p>
   </div>;
 }
