@@ -8,6 +8,8 @@ export type ProjectBase = {
   description: string;
   image: string;
   url: string;
+  liveUrl?: string;
+  highlights?: string[];
   featured: boolean;
   portfolio: boolean;
   order: number;
@@ -42,6 +44,8 @@ export const projectRecords: ProjectRecord[] = [
     description: "Catálogo de relógios com filtros, favoritos e detalhes de produto. Veja as telas e os recursos desenvolvidos.",
     image: "/portfolio/vyne/hero-desktop.png",
     url: "/projetos/vyne",
+    liveUrl: "https://vyne-relogios.vercel.app/",
+    highlights: ["Catálogo com filtros e favoritos", "Página de detalhes para cada produto", "Layout para computador e celular"],
     featured: true,
     portfolio: true,
     order: 1,
@@ -64,7 +68,8 @@ export const projectRecords: ProjectRecord[] = [
   {
     id: "tony", slug: "barbearia-tony", name: "Tony Barber", category: "Sistema de agendamento",
     description: "Site e agendamento para barbearias, com escolha de profissional, serviços e horários. Projeto autoral da KAIROS.",
-    image: "/portfolio/tony/home-1440.png", url: "/projetos/barbearia-tony",
+    image: "/portfolio/tony/home-1440.png", url: "/projetos/barbearia-tony", liveUrl: "https://tonybarber.vercel.app/",
+    highlights: ["Agendamento em etapas: profissional, serviço, horário e dados", "Site de apresentação ligado à agenda", "React, TypeScript e Firebase"],
     featured: false, portfolio: true, order: 2,
   },
   {
@@ -76,7 +81,7 @@ export const projectRecords: ProjectRecord[] = [
     image: "/portfolio/kairos-current.png",
     url: "/projetos/kairos",
     featured: false,
-    portfolio: true,
+    portfolio: false,
     order: 3,
   },
 ];

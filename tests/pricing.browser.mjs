@@ -40,7 +40,7 @@ try {
     else assert.ok(result.plans.every(plan => Math.abs(plan.top-result.plans[0].top)<1));
     console.log(width + "px: pricing hierarchy and layout OK");
   }
-  const custom = section.getByRole("link", {name:/contar meu problema/});
+  const custom = section.getByRole("link", {name:/pedir orçamento/});
   assert.equal(await custom.count(), 5);
   for(let index=0; index<5; index++) {
     await custom.nth(index).click();

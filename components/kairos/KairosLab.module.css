@@ -50,6 +50,10 @@
 .portfolioCard .link { color:#b6d4ff; }
 @media(max-width:760px) { .portfolioGrid { grid-template-columns:1fr; gap:48px; padding-bottom:64px; } }
 
-.visitProject { display:flex; align-items:center; justify-content:space-between; width:fit-content; gap:32px; min-height:48px; padding:12px 20px; margin:24px 0 12px; border:1px solid #98bced; border-radius:6px; color:#e5efff; background:#14243b; font-size:14px; font-weight:500; }
+.highlights { list-style:none; margin:20px 0 0; padding:0; display:grid; gap:10px; }
+.highlights li { position:relative; padding-left:22px; color:#c3cddb; font-size:15px; line-height:1.55; }
+.highlights li::before { content:""; position:absolute; left:2px; top:.6em; width:8px; height:8px; border-radius:50%; border:1.5px solid #6f9fe6; }
+.cardActions { display:flex; flex-wrap:wrap; align-items:center; gap:8px 28px; margin-top:28px; }
+.visitProject { display:flex; align-items:center; justify-content:space-between; width:fit-content; gap:32px; min-height:48px; padding:12px 20px; border:1px solid #98bced; border-radius:6px; color:#e5efff; background:#14243b; font-size:14px; font-weight:500; text-decoration:none; }
 .visitProject:hover { background:#203856; }
 .visitProject:focus-visible { outline:2px solid #b6d4ff; outline-offset:4px; }

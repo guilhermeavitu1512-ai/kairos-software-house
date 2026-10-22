@@ -9,10 +9,13 @@ export default function KairosLab({ priority = false }: { priority?: boolean }) 
     <div className={`${styles.shell} ${styles.portfolioGrid}`}>
       {portfolioProjects.map(project=><article key={project.id} className={styles.portfolioCard}>
         <Link href={project.url} aria-label={`Ver projeto ${project.name}`} className={styles.portfolioImage}><Image src={project.image} alt={`Página do projeto ${project.name}`} width={1440} height={1000} priority={priority} sizes="(max-width:760px) calc(100vw - 40px), 600px" /></Link>
-        <p className={styles.portfolioType}>{project.id === "kairos" ? "PROJETO AUTORAL · SITE DA KAIROS" : "PROJETO AUTORAL · KAIROS LAB"}</p>
+        <p className={styles.portfolioType}>{project.category.toUpperCase()} · PROJETO AUTORAL</p>
         <h3>{project.name}</h3><p>{project.description}</p>
-        {project.id === "vyne" && <a className={styles.visitProject} href="https://vyne-relogios.vercel.app/" target="_blank" rel="noopener noreferrer">Abrir site VYNE <span aria-hidden="true">↗</span></a>}
-        <Link className={styles.link} href={project.url}>{project.id === "kairos" ? "Ver decisões do projeto" : "Ver telas e funcionalidades"} <span aria-hidden="true">→</span></Link>
+        {project.highlights && <ul className={styles.highlights}>{project.highlights.map(item=><li key={item}>{item}</li>)}</ul>}
+        <div className={styles.cardActions}>
+          {project.liveUrl && <a className={styles.visitProject} href={project.liveUrl} target="_blank" rel="noopener noreferrer">Abrir site {project.name} <span aria-hidden="true">↗</span></a>}
+          <Link className={styles.link} href={project.url}>Ver telas e funcionalidades <span aria-hidden="true">→</span></Link>
+        </div>
       </article>)}
     </div>
   </section>;

@@ -15,7 +15,7 @@ try{for(const width of [1440,820,390]){
  }
  await page.keyboard.press('Home');assert.equal(await tabs.first().getAttribute('aria-selected'),'true');
  await page.keyboard.press('End');assert.equal(await tabs.last().getAttribute('aria-selected'),'true');
- await section.getByRole('tabpanel').getByRole('link',{name:'Contar meu problema'}).click();
+ await section.getByRole('tabpanel').getByRole('link',{name:'Pedir orçamento'}).click();
  const dialog=page.locator('dialog');await dialog.waitFor({state:'visible'});assert.match(await dialog.innerText(),/Interesse: Bots & Automações/);
  await page.keyboard.press('Escape');assert.equal(await dialog.isVisible(),false);assert.deepEqual(errors,[]);
  console.log('Services tabs, keyboard, context, overflow',width,'OK');await page.close();

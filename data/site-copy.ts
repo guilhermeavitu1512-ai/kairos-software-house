@@ -4,6 +4,12 @@ export const storyChapters = [
   "Menos tarefas feitas à mão.",
 ] as const;
 
+export const problemCards = [
+  { title: storyChapters[0], text: "Um site que apresenta o que você faz, mostra como contratar e leva o visitante direto para o seu WhatsApp.", cta: "Quero um site", subject: "Sites", example: { label: "Ver exemplo: VYNE", href: "/projetos/vyne" } },
+  { title: storyChapters[1], text: "Um sistema em que o cliente escolhe serviço, profissional e horário sem depender de troca de mensagens.", cta: "Quero organizar minha agenda", subject: "Sistemas & SaaS", example: { label: "Ver exemplo: Tony Barber", href: "/projetos/barbearia-tony" } },
+  { title: storyChapters[2], text: "Integrações que copiam dados, enviam avisos e atualizam planilhas no lugar da sua equipe.", cta: "Quero automatizar uma tarefa", subject: "Bots & Automações" },
+] as const;
+
 export const projectSteps = [
   { title: "Conte o que você precisa", text: "A conversa começa pelo WhatsApp. Você apresenta seu negócio, o que quer criar e as dúvidas que já tem." },
   { title: "Confira a proposta", text: "Antes de contratar, confira as páginas, os recursos, o prazo, as revisões e o valor do projeto." },

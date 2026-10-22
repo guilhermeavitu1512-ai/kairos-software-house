@@ -11,7 +11,8 @@ export default function PricingSection() {
       </header>
 
       <div className={styles.plans}>
-        {sitePlans.map(plan => <article key={plan.id} data-plan={plan.id} className={styles.plan + (plan.id === "business" ? " " + styles.featured : "")} aria-labelledby={"plan-" + plan.id}>
+        {sitePlans.map(plan => <article key={plan.id} data-plan={plan.id} className={styles.plan + ("recommended" in plan ? " " + styles.featured : "")} aria-labelledby={"plan-" + plan.id}>
+          {"recommended" in plan && <p className={styles.badge}>Recomendado</p>}
           <h3 id={"plan-" + plan.id}>{plan.name}</h3>
           <p className={styles.price}>
             <span className={styles.installments}>10x de</span>
@@ -25,9 +26,8 @@ export default function PricingSection() {
           <ProblemFlowTrigger
             className={styles.choose}
             subject={`${plan.name} — R$ ${plan.upfront} ou 10x de R$ ${plan.installment}`}
-            aria-label={`Contar meu problema — ${plan.name}`}
             data-conversion="plan_contact" data-plan-id={plan.id}
-          >Contar meu problema<span aria-hidden="true">→</span></ProblemFlowTrigger>
+          >{plan.cta}<span aria-hidden="true">→</span></ProblemFlowTrigger>
         </article>)}
       </div>
 
@@ -37,9 +37,9 @@ export default function PricingSection() {
         <h3>Precisa de algo além de um site?</h3>
         <ul className={styles.solutions}>
           {customSolutions.map(solution => <li key={solution}>
-            <ProblemFlowTrigger className={styles.solution} subject={solution} aria-label={solution + " — contar meu problema"}>
+            <ProblemFlowTrigger className={styles.solution} subject={solution} aria-label={solution + " — pedir orçamento"}>
               <span>{solution}</span>
-              <span className={styles.quote}>Contar meu problema <span className={styles.arrow} aria-hidden="true">→</span></span>
+              <span className={styles.quote}>Pedir orçamento <span className={styles.arrow} aria-hidden="true">→</span></span>
             </ProblemFlowTrigger>
           </li>)}
         </ul>
