@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ProblemFlowTrigger } from "@/components/kairos/problem-flow/ProblemFlow";
 import styles from "./SiteExplorer.module.css";
 
@@ -9,13 +9,6 @@ export interface ExplorableProject { name: string; liveUrl: string; }
 // Opens the published demo inside a phone, so the visitor explores it without leaving the page.
 export default function SiteExplorer({ project, onClose }: { project: ExplorableProject; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    // Heavy sites still paint while loading, so the notice never hides them for long.
-    const timer = window.setTimeout(() => setLoaded(true), 3000);
-    return () => window.clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const node = dialog.current;
@@ -35,8 +28,8 @@ export default function SiteExplorer({ project, onClose }: { project: Explorable
       </div>
       <div className={styles.stage}>
         <div className={styles.phone}>
-          {!loaded && <p className={styles.loading} role="status">Abrindo o site…</p>}
-          <iframe src={project.liveUrl} title={`Site ${project.name} funcionando`} onLoad={() => setLoaded(true)} />
+          <p className={styles.loading}>Abrindo o site…</p>
+          <iframe src={project.liveUrl} title={`Site ${project.name} funcionando`} />
         </div>
         <div className={styles.side}>
           <h2>Gostou de como funciona?</h2>

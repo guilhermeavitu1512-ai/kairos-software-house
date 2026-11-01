@@ -13,6 +13,7 @@ const PROJECTS = [
   { app: "VYNE", short: "VYNE", note: "Nova venda na loja", tone: "200,240,106", image: "/portfolio/hero/vyne.webp", url: "https://vyne-relogios.vercel.app/" },
   { app: "Blend Burger", short: "Blend", note: "Novo pedido: 2 burgers", tone: "255,122,46", image: "/portfolio/hero/blend.webp", url: "https://blend-burger-mocha.vercel.app/" },
   { app: "Tony Barber", short: "Tony", note: "Novo agendamento: corte às 18h", tone: "240,178,74", image: "/portfolio/hero/tony.webp", url: "https://tonybarber.vercel.app/" },
+  { app: "ARARA", short: "ARARA", note: "Nova venda: 2 camisetas", tone: "205,210,225", image: "/portfolio/hero/arara.webp", url: "https://arara-roupas.vercel.app/" },
 ];
 
 const SLIDE_MS = 4500;
@@ -21,7 +22,8 @@ const SWIPE_PX = 40;
 // Position around the active phone: 0 center, 1 right, -1 left, 2 behind.
 const slotOf = (index: number, active: number) => {
   const distance = (index - active + PROJECTS.length) % PROJECTS.length;
-  return distance === PROJECTS.length - 1 ? -1 : distance;
+  if (distance === PROJECTS.length - 1) return -1;
+  return Math.min(distance, 2);
 };
 
 const heroGroup = { hide: {}, show: { transition: { staggerChildren: 0.09 } } };
@@ -76,7 +78,7 @@ export default function HeroShowcase({ phoneRef, visible, settled }: { phoneRef:
         <m.p className={styles.sub} variants={heroItem}>Sites que atendem, agendam e vendem por você, a partir de R$&nbsp;49/mês + criação do site.</m.p>
         <m.div className={styles.actions} variants={heroItem}>
           <ProblemFlowTrigger className={styles.primary}>Quero o meu <span aria-hidden="true">→</span></ProblemFlowTrigger>
-          <a className={styles.secondary} href="#demonstracoes">Testar uma demonstração</a>
+          <a className={styles.secondary} href="#solucoes">Testar uma demonstração</a>
         </m.div>
       </m.div>
 

@@ -12,9 +12,8 @@
 
 .stage { display: flex; flex: 1; align-items: center; justify-content: center; gap: clamp(32px, 6vw, 88px); min-height: 0; padding: 20px; }
 .phone { position: relative; flex: none; width: 402px; height: 100%; max-height: 866px; overflow: hidden; border: 6px solid #1a1e28; border-radius: 34px; background: #000; }
-.phone iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+.phone iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .loading { position: absolute; top: 50%; right: 0; left: 0; margin: 0; color: #aeb5c1; font-size: 15px; text-align: center; transform: translateY(-50%); }
-.phone:has(.loading) iframe { opacity: 0; }
 
 .side { max-width: 320px; }
 .side h2 { margin: 0; font-family: var(--display); font-size: 36px; font-weight: 600; line-height: 1.08; letter-spacing: -.03em; }

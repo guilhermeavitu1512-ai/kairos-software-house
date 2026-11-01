@@ -6,7 +6,7 @@ export default function SiteFooter() {
     <footer className={styles.footer}>
       <nav className={styles.nav} aria-label="Navegação do rodapé">
         <Link href="/#projetos">Projetos</Link>
-        <Link href="/#demonstracoes">Demonstrações</Link>
+        <Link href="/#solucoes">Soluções</Link>
         <Link href="/#precos">Pacotes</Link>
         <Link href="/sobre">Sobre</Link>
         <Link href="/contato">Contato</Link>

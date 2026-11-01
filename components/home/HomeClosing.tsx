@@ -1,4 +1,4 @@
-import { commonQuestions, projectSteps } from "@/data/site-copy";
+import { commonQuestions } from "@/data/site-copy";
 import { buildWhatsAppUrl } from "@/lib/constants";
 import { ProblemFlowTrigger } from "@/components/kairos/problem-flow/ProblemFlow";
 import styles from "./Home.module.css";
@@ -17,22 +17,6 @@ export function ActionBand({ title, text, cta, source }: { title: string; text: 
         </div>
       </div>
     </aside>
-  );
-}
-
-export function Process() {
-  return (
-    <section id="como-funciona" className={styles.section} aria-labelledby="process-title">
-      <div className={styles.shell}>
-        <header className={styles.head}>
-          <p className={styles.kicker}>Como funciona</p>
-          <h2 id="process-title">Da primeira mensagem ao site no ar.</h2>
-        </header>
-        <ol className={styles.steps}>
-          {projectSteps.map((step, index) => <li key={step.title}><span>{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}
-        </ol>
-      </div>
-    </section>
   );
 }
 
@@ -56,8 +40,7 @@ export function Faq() {
 export function FinalCall() {
   return (
     <section className={styles.final} aria-labelledby="final-title">
-      <p className={styles.finalClock} aria-hidden="true">03:00</p>
-      <h2 id="final-title">Hoje à noite, seu negócio<br />pode continuar aberto.</h2>
+      <h2 id="final-title">O próximo cliente<br />pode ser seu.</h2>
       <ProblemFlowTrigger className={styles.finalCta}>Quero o meu site <span aria-hidden="true">→</span></ProblemFlowTrigger>
       <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="footer">Prefiro ir direto ao WhatsApp ↗</a>
     </section>

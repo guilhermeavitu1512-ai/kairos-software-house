@@ -3,16 +3,14 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import HeroShowcase from "./HeroShowcase";
+import IntroParticles, { type ParticleMode } from "./IntroParticles";
 import styles from "./IntroHero.module.css";
 
-const NOTIFICATIONS = [
-  { app: "Cássio Franklin", text: "Novo agendamento: degradê às 10h", icon: "C", tone: "#e97a58" },
-  { app: "Cássio Franklin", text: "Novo agendamento: corte + barba às 14h", icon: "C", tone: "#e97a58" },
-  { app: "VYNE", text: "Nova venda na loja", icon: "V", tone: "#c8f06a" },
-];
+// Scene timeline in ms: boot, the particles slowly write the name, the logo rises, the two lines, every portfolio site is built on the phone.
+const AT = { word: 1700, logo: 4400, first: 5900, second: 7500, phone: 9100, land: 14700, done: 16400 };
 
-// Scene timeline in ms. Exits overlap the next scene so nothing cuts hard.
-const AT = { phone: 1000, firstNote: 1450, noteGap: 560, punchline: 3350, unlock: 4250, land: 4950, done: 6200 };
+// Built one after the other; Cássio comes last because the hero opens on it.
+const SITES = ["arara", "tony", "blend", "vyne", "cassio"];
 
 // Runs before hydration so skipped intros never show a black frame.
 const skipScript = `try{if(location.hash||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.dataset.introSkip="1"}catch(e){}`;
@@ -20,14 +18,15 @@ const skipScript = `try{if(location.hash||matchMedia("(prefers-reduced-motion: r
 // Plays on every full page load; moving between pages inside the site does not replay it.
 let played = false;
 
-type Scene = "sleep" | "phone" | "punchline" | "unlock" | "land" | "done";
+type Scene = "boot" | "word" | "logo" | "first" | "second" | "phone" | "land" | "done";
 type Flight = { x: number; y: number; scale: number };
 
+const particleMode = (scene: Scene): ParticleMode => (scene === "boot" ? "swirl" : scene === "phone" || scene === "land" ? "frame" : "word");
+
 export default function IntroHero() {
-  const [scene, setScene] = useState<Scene>(() => (played ? "done" : "sleep"));
-  const [notes, setNotes] = useState(0);
+  const [scene, setScene] = useState<Scene>(() => (played ? "done" : "boot"));
+  const [percent, setPercent] = useState(0);
   const [flight, setFlight] = useState<Flight>({ x: 0, y: 0, scale: 1 });
-  const camera = useRef<HTMLDivElement>(null);
   const device = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const timers = useRef<number[]>([]);
@@ -48,21 +47,19 @@ export default function IntroHero() {
     }
     document.body.style.overflow = "hidden";
     const at = (delay: number, run: () => void) => timers.current.push(window.setTimeout(run, delay));
+    for (let step = 1; step <= 20; step += 1) at(step * (AT.word / 20), () => setPercent(step * 5));
+    at(AT.word, () => setScene("word"));
+    at(AT.logo, () => setScene("logo"));
+    at(AT.first, () => setScene("first"));
+    at(AT.second, () => setScene("second"));
     at(AT.phone, () => setScene("phone"));
-    NOTIFICATIONS.forEach((_, index) => at(AT.firstNote + AT.noteGap * index, () => {
-      setNotes(index + 1);
-      device.current?.animate([{ translate: "0 0" }, { translate: "-2px 0" }, { translate: "2px 0" }, { translate: "-1px 0" }, { translate: "0 0" }], { duration: 260, iterations: 2 });
-    }));
-    at(AT.punchline, () => setScene("punchline"));
-    at(AT.unlock, () => setScene("unlock"));
     at(AT.land, () => {
       // One continuous shot: the intro phone flies into the hero phone's exact spot.
       const from = device.current?.getBoundingClientRect();
       const to = phoneRef.current?.getBoundingClientRect();
-      const zoom = camera.current ? new DOMMatrix(getComputedStyle(camera.current).transform).a : 1;
       if (from && to) setFlight({
-        x: (to.left + to.width / 2 - from.left - from.width / 2) / zoom,
-        y: (to.top + to.height / 2 - from.top - from.height / 2) / zoom,
+        x: to.left + to.width / 2 - from.left - from.width / 2,
+        y: to.top + to.height / 2 - from.top - from.height / 2,
         scale: to.width / from.width,
       });
       setScene("land");
@@ -86,40 +83,24 @@ export default function IntroHero() {
       <script dangerouslySetInnerHTML={{ __html: skipScript }} />
       <noscript><style>{`.${styles.intro}{display:none}`}</style></noscript>
       {running && (
-        <div className={styles.intro} data-scene={scene} style={{ "--fly-x": `${flight.x}px`, "--fly-y": `${flight.y}px`, "--fly-scale": flight.scale } as CSSProperties} role="img" aria-label="Animação de abertura: às três da manhã, o dono dorme enquanto o celular recebe agendamentos e vendas.">
-          <div className={styles.sky} aria-hidden="true"><i /><i /><i /></div>
+        <div className={styles.intro} data-scene={scene} style={{ "--fly-x": `${flight.x}px`, "--fly-y": `${flight.y}px`, "--fly-scale": flight.scale } as CSSProperties} role="img" aria-label="Abertura: um sistema inicia, partículas formam o nome KAIROS e depois constroem um site em um celular.">
+          <span className={styles.grid} aria-hidden="true" />
+          <IntroParticles mode={particleMode(scene)} phone={device} />
 
-          <div ref={camera} className={styles.camera}>
-            <div className={styles.left}>
-              <p className={styles.clock}>03<span>:</span>00</p>
-              <p className={styles.line}>Você está dormindo.</p>
+          <Image className={styles.logo} src="/brand/kairos-logo.png" alt="" width={220} height={220} priority />
+
+          <p className={styles.boot}><span>Sistema de última geração</span><b>{percent}%</b></p>
+
+          <p className={styles.line} data-line="first">Seu cliente decide em segundos.</p>
+          <p className={styles.line} data-line="second">Seu concorrente não vai esperar.</p>
+          <p className={styles.line} data-line="third">Agora é a sua vez.</p>
+          <p className={styles.touch}>Mexa nas partículas</p>
+
+          <div ref={device} className={styles.phone}>
+            <div className={styles.screen}>
+              {SITES.map((site, index) => <Image key={site} className={styles.site} style={{ "--i": index } as CSSProperties} src={`/portfolio/hero/${site}.webp`} alt="" fill priority unoptimized />)}
+              <i className={styles.scan} aria-hidden="true" />
             </div>
-
-            <div ref={device} className={styles.phone}>
-              <span key={notes} className={styles.ring} data-on={notes > 0} aria-hidden="true" />
-              <div className={styles.screen}>
-                <Image className={styles.site} src="/portfolio/cassio/home-390.webp" alt="" fill priority unoptimized />
-                <div className={styles.lock}>
-                  <div className={styles.status} aria-hidden="true"><span>KAIROS</span><i /></div>
-                  <svg className={styles.padlock} width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden="true"><rect x="1" y="7" width="12" height="8" rx="2" fill="currentColor" /><path d="M3.5 7V4.8a3.5 3.5 0 0 1 7 0V7" stroke="currentColor" strokeWidth="1.6" /></svg>
-                  <span className={styles.lockTime}>03:00</span>
-                  <span className={styles.lockDate}>Madrugada de terça-feira</span>
-                  <ul className={styles.notes}>
-                    {NOTIFICATIONS.slice(0, notes).map((note) => (
-                      <li key={note.text}>
-                        <b style={{ background: note.tone }} aria-hidden="true">{note.icon}</b>
-                        <span><strong>{note.app}<small>agora</small></strong>{note.text}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <span className={styles.swipe}>Deslize para abrir</span>
-                  <span className={styles.homeBar} aria-hidden="true" />
-                </div>
-              </div>
-              <span className={styles.reflection} aria-hidden="true" />
-            </div>
-
-            <div className={styles.right}><p className={styles.line}>Seu negócio, não.</p></div>
           </div>
 
           <button className={styles.skip} type="button" onClick={finish}>Pular intro</button>
