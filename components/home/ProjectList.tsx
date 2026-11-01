@@ -59,7 +59,6 @@ export default function ProjectList({ headingLevel = "h2" }: { headingLevel?: "h
       <div className={styles.shell}>
         <header className={styles.head}>
           <Heading id="projects-title">Cinco projetos. Cinco sites no ar.</Heading>
-          <p>Projetos de demonstração da KAIROS, publicados e funcionando.</p>
         </header>
 
         <div role="group" aria-label="Escolher projeto" className={styles.tabs}>

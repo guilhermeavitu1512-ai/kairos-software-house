@@ -20,7 +20,6 @@ export default function PlanFinder() {
         <header className={styles.head}>
           <p className={styles.kicker}>Pacotes</p>
           <h2 id="plans-title">O que o seu negócio precisa fazer?</h2>
-          <p>Escolha uma opção e mostramos o pacote certo.</p>
         </header>
         <div className={styles.needs} role="group" aria-label="O que você precisa">
           {NEEDS.map((item) => <button key={item.plan} type="button" aria-pressed={need === item.plan} onClick={() => setNeed(item.plan)}>{item.label}</button>)}
@@ -30,10 +29,10 @@ export default function PlanFinder() {
           highlightId={need ?? "agendamento"}
           badge={need ? "Indicado para você" : "Recomendado"}
           renderAction={(plan, highlighted) => (
-            <ProblemFlowTrigger className={styles.planCta} data-highlight={highlighted} subject={`${plan.name}: R$ ${plan.monthly}/mês + R$ ${plan.upfront} na criação`} data-conversion="plan_contact" data-plan-id={plan.id}>{plan.cta} <span aria-hidden="true">→</span></ProblemFlowTrigger>
+            <ProblemFlowTrigger className={styles.planCta} data-highlight={highlighted} subject={`${plan.name}: R$ ${plan.upfront} à vista ou 12x de R$ ${plan.installment}`} data-conversion="plan_contact" data-plan-id={plan.id}>{plan.cta} <span aria-hidden="true">→</span></ProblemFlowTrigger>
           )}
         />
-        <p className={styles.planNote}>A mensalidade inclui hospedagem, suporte e até 2 pequenas alterações por mês. Domínio próprio não incluído.</p>
+        <p className={styles.planNote}>Sem mensalidade: hospedagem, suporte e até 2 pequenas alterações por mês já estão incluídos. Domínio próprio não incluído.</p>
       </div>
     </section>
   );

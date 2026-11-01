@@ -7,10 +7,16 @@ import IntroParticles, { type ParticleMode } from "./IntroParticles";
 import styles from "./IntroHero.module.css";
 
 // Scene timeline in ms: boot, the particles slowly write the name, the logo rises, the two lines, every portfolio site is built on the phone.
-const AT = { word: 1700, logo: 4400, first: 5900, second: 7500, phone: 9100, land: 14700, done: 16400 };
+const AT = { word: 1700, logo: 4400, first: 5900, second: 7500, phone: 9100, land: 15300, done: 17000 };
 
 // Built one after the other; Cássio comes last because the hero opens on it.
-const SITES = ["arara", "tony", "blend", "vyne", "cassio"];
+const SITES = [
+  { id: "arara", name: "ARARA", note: "Nova venda: 2 camisetas" },
+  { id: "tony", name: "Tony Barber", note: "Novo agendamento: corte às 18h" },
+  { id: "blend", name: "Blend Burger", note: "Novo pedido: 2 burgers" },
+  { id: "vyne", name: "VYNE", note: "Nova venda na loja" },
+  { id: "cassio", name: "Cássio Franklin", note: "Novo agendamento: degradê às 10h" },
+];
 
 // Runs before hydration so skipped intros never show a black frame.
 const skipScript = `try{if(location.hash||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.dataset.introSkip="1"}catch(e){}`;
@@ -21,6 +27,13 @@ let played = false;
 type Scene = "boot" | "word" | "logo" | "first" | "second" | "phone" | "land" | "done";
 type Flight = { x: number; y: number; scale: number };
 
+const BOOT_STEPS = ["Iniciando o sistema", "Carregando as partículas", "Preparando a experiência", "Sistema de última geração"];
+
+// Word by word, so each sentence arrives instead of switching on.
+function Line({ id, text }: { id: string; text: string }) {
+  return <p className={styles.line} data-line={id}>{text.split(" ").map((word, index) => <span key={word} style={{ "--w": index } as CSSProperties}>{word}{" "}</span>)}</p>;
+}
+
 const particleMode = (scene: Scene): ParticleMode => (scene === "boot" ? "swirl" : scene === "phone" || scene === "land" ? "frame" : "word");
 
 export default function IntroHero() {
@@ -28,6 +41,7 @@ export default function IntroHero() {
   const [percent, setPercent] = useState(0);
   const [flight, setFlight] = useState<Flight>({ x: 0, y: 0, scale: 1 });
   const device = useRef<HTMLDivElement>(null);
+  const root = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const timers = useRef<number[]>([]);
   const running = scene !== "done";
@@ -76,6 +90,17 @@ export default function IntroHero() {
     return () => window.removeEventListener("keydown", onKey);
   }, [running, finish]);
 
+  useEffect(() => {
+    if (!running) return;
+    // The background layers lean away from the pointer, so the whole scene has depth.
+    const onMove = (event: PointerEvent) => {
+      root.current?.style.setProperty("--mx", String(event.clientX / window.innerWidth - 0.5));
+      root.current?.style.setProperty("--my", String(event.clientY / window.innerHeight - 0.5));
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, [running]);
+
   const heroIn = scene === "land" || scene === "done";
 
   return (
@@ -83,25 +108,44 @@ export default function IntroHero() {
       <script dangerouslySetInnerHTML={{ __html: skipScript }} />
       <noscript><style>{`.${styles.intro}{display:none}`}</style></noscript>
       {running && (
-        <div className={styles.intro} data-scene={scene} style={{ "--fly-x": `${flight.x}px`, "--fly-y": `${flight.y}px`, "--fly-scale": flight.scale } as CSSProperties} role="img" aria-label="Abertura: um sistema inicia, partículas formam o nome KAIROS e depois constroem um site em um celular.">
+        <div ref={root} className={styles.intro} data-scene={scene} style={{ "--fly-x": `${flight.x}px`, "--fly-y": `${flight.y}px`, "--fly-scale": flight.scale } as CSSProperties} role="img" aria-label="Abertura: um sistema inicia, partículas formam o nome KAIROS e depois constroem um site em um celular.">
+          <span className={styles.aurora} aria-hidden="true"><i /><i /><i /></span>
           <span className={styles.grid} aria-hidden="true" />
-          <IntroParticles mode={particleMode(scene)} phone={device} />
+          <div className={styles.stage}>
+            <span className={styles.rays} aria-hidden="true"><i /><i /></span>
+            <span className={styles.flare} aria-hidden="true" />
+            <IntroParticles mode={particleMode(scene)} shock={scene === "logo"} phone={device} />
+            <p className={styles.name} aria-hidden="true">KAIROS</p>
+            <Image className={styles.logo} src="/brand/kairos-logo.png" alt="" width={220} height={220} priority />
+          </div>
+          <span className={styles.orbits} aria-hidden="true"><i /><i /><i /></span>
+          <span className={styles.shock} aria-hidden="true"><i /><i /></span>
+          <span className={styles.vignette} aria-hidden="true" />
+          <span className={styles.bloom} aria-hidden="true" />
 
-          <Image className={styles.logo} src="/brand/kairos-logo.png" alt="" width={220} height={220} priority />
+          <div className={styles.boot}>
+            <p><span>{BOOT_STEPS[Math.min(3, Math.floor(percent / 30))]}</span><b>{percent}%</b></p>
+            <i aria-hidden="true"><u style={{ transform: `scaleX(${percent / 100})` }} /></i>
+          </div>
 
-          <p className={styles.boot}><span>Sistema de última geração</span><b>{percent}%</b></p>
-
-          <p className={styles.line} data-line="first">Seu cliente decide em segundos.</p>
-          <p className={styles.line} data-line="second">Seu concorrente não vai esperar.</p>
-          <p className={styles.line} data-line="third">Agora é a sua vez.</p>
+          <Line id="first" text="Seu cliente decide em segundos." />
+          <Line id="second" text="Seu concorrente não vai esperar." />
+          <Line id="third" text="Agora é a sua vez." />
           <p className={styles.touch}>Mexa nas partículas</p>
 
           <div ref={device} className={styles.phone}>
-            <div className={styles.screen}>
-              {SITES.map((site, index) => <Image key={site} className={styles.site} style={{ "--i": index } as CSSProperties} src={`/portfolio/hero/${site}.webp`} alt="" fill priority unoptimized />)}
-              <i className={styles.scan} aria-hidden="true" />
+            <div className={styles.body}>
+              <div className={styles.screen}>
+                {SITES.map((site, index) => <Image key={site.id} className={styles.site} style={{ "--i": index } as CSSProperties} src={`/portfolio/hero/${site.id}.webp`} alt="" fill priority unoptimized />)}
+                <i className={styles.scan} aria-hidden="true" />
+                <i className={styles.glass} aria-hidden="true" />
+              </div>
             </div>
           </div>
+
+          <ul className={styles.notes} aria-hidden="true">
+            {SITES.map((site, index) => <li key={site.id} style={{ "--i": index } as CSSProperties}><b>{site.name[0]}</b><span><strong>{site.name}</strong>{site.note}</span></li>)}
+          </ul>
 
           <button className={styles.skip} type="button" onClick={finish}>Pular intro</button>
         </div>

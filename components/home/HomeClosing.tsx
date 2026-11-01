@@ -3,13 +3,12 @@ import { buildWhatsAppUrl } from "@/lib/constants";
 import { ProblemFlowTrigger } from "@/components/kairos/problem-flow/ProblemFlow";
 import styles from "./Home.module.css";
 
-export function ActionBand({ title, text, cta, source }: { title: string; text: string; cta: string; source: string }) {
+export function ActionBand({ title, cta, source }: { title: string; cta: string; source: string }) {
   return (
     <aside className={styles.section} aria-label={title}>
       <div className={`${styles.shell} ${styles.band}`}>
         <div>
           <h2>{title}</h2>
-          <p>{text}</p>
         </div>
         <div className={styles.bandActions}>
           <ProblemFlowTrigger className={styles.bandCta}>{cta} <span aria-hidden="true">→</span></ProblemFlowTrigger>

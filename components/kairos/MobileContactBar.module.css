@@ -6,7 +6,7 @@
   .bar[data-visible="true"] { transform: none; visibility: visible; }
   :global(body.menu-open) .bar { visibility: hidden; }
   .primary, .secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 999px; font-size: 15px; font-weight: 600; }
-  .primary { background: var(--amber); color: #1a1205; }
+  .primary { background: var(--blue); color: #fff; }
   .secondary { padding: 0 18px; border: 1px solid rgba(255,255,255,.26); color: #fff; }
 }
 @media (prefers-reduced-motion: reduce) { .bar { transition: none; } }

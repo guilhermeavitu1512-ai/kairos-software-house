@@ -1,8 +1,8 @@
 .page { background:var(--ink); color:#f5f7fa; padding:128px 0 80px; }
 .shell { width:min(1232px,calc(100% - 96px)); margin:auto; }
-.back,.link { display:inline-flex; min-height:44px; align-items:center; color:var(--amber); font-size:14px; }
+.back,.link { display:inline-flex; min-height:44px; align-items:center; color: var(--blue-bright); font-size:14px; }
 .header { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; margin:56px 0 48px; }
-.eyebrow { font-size:11px !important; letter-spacing:.14em; text-transform:uppercase; color:var(--amber) !important; margin:0 0 20px; }
+.eyebrow { font-size:11px !important; letter-spacing:.14em; text-transform:uppercase; color: var(--blue-bright) !important; margin:0 0 20px; }
 .header h1 { font-size:clamp(44px,6vw,80px); line-height:1.05; letter-spacing:-.045em; font-weight:500; margin:0; }
 .header h1 span { display:block; font-size:clamp(26px,3vw,40px); color:#9ca8b9; margin-top:14px; letter-spacing:-.025em; }
 .page p { color:#a8b4c5; font-size:16px; line-height:1.75; }

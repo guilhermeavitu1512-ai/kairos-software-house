@@ -9,11 +9,11 @@ import styles from "./HeroShowcase.module.css";
 
 // Cássio comes first: it is the site the intro phone lands on.
 const PROJECTS = [
-  { app: "Cássio Franklin", short: "Cássio", note: "Novo agendamento: degradê às 10h", tone: "233,122,88", image: "/portfolio/hero/cassio.webp", url: "https://cassiofranklin.vercel.app/" },
-  { app: "VYNE", short: "VYNE", note: "Nova venda na loja", tone: "200,240,106", image: "/portfolio/hero/vyne.webp", url: "https://vyne-relogios.vercel.app/" },
-  { app: "Blend Burger", short: "Blend", note: "Novo pedido: 2 burgers", tone: "255,122,46", image: "/portfolio/hero/blend.webp", url: "https://blend-burger-mocha.vercel.app/" },
-  { app: "Tony Barber", short: "Tony", note: "Novo agendamento: corte às 18h", tone: "240,178,74", image: "/portfolio/hero/tony.webp", url: "https://tonybarber.vercel.app/" },
-  { app: "ARARA", short: "ARARA", note: "Nova venda: 2 camisetas", tone: "205,210,225", image: "/portfolio/hero/arara.webp", url: "https://arara-roupas.vercel.app/" },
+  { app: "Cássio Franklin", short: "Cássio", note: "Novo agendamento: degradê às 10h", image: "/portfolio/hero/cassio.webp", url: "https://cassiofranklin.vercel.app/" },
+  { app: "VYNE", short: "VYNE", note: "Nova venda na loja", image: "/portfolio/hero/vyne.webp", url: "https://vyne-relogios.vercel.app/" },
+  { app: "Blend Burger", short: "Blend", note: "Novo pedido: 2 burgers", image: "/portfolio/hero/blend.webp", url: "https://blend-burger-mocha.vercel.app/" },
+  { app: "Tony Barber", short: "Tony", note: "Novo agendamento: corte às 18h", image: "/portfolio/hero/tony.webp", url: "https://tonybarber.vercel.app/" },
+  { app: "ARARA", short: "ARARA", note: "Nova venda: 2 camisetas", image: "/portfolio/hero/arara.webp", url: "https://arara-roupas.vercel.app/" },
 ];
 
 const SLIDE_MS = 4500;
@@ -66,7 +66,7 @@ export default function HeroShowcase({ phoneRef, visible, settled }: { phoneRef:
   };
 
   return (
-    <section ref={sectionRef} className={styles.hero} style={{ "--tone": project.tone, "--slide": `${SLIDE_MS}ms` } as CSSProperties} data-in={visible} onPointerMove={tilt} aria-labelledby="hero-title">
+    <section ref={sectionRef} className={styles.hero} style={{ "--slide": `${SLIDE_MS}ms` } as CSSProperties} data-in={visible} onPointerMove={tilt} aria-labelledby="hero-title">
       <div className={styles.sky} aria-hidden="true"><span className={styles.stars} /><span className={styles.glow} /></div>
 
       <m.div className={styles.copy} variants={heroGroup} initial={false} animate={visible ? "show" : "hide"}>
@@ -75,10 +75,10 @@ export default function HeroShowcase({ phoneRef, visible, settled }: { phoneRef:
           <m.span variants={heroItem}>Você fecha.</m.span>
           <m.em variants={heroItem}>Seu site não.</m.em>
         </h1>
-        <m.p className={styles.sub} variants={heroItem}>Sites que atendem, agendam e vendem por você, a partir de R$&nbsp;49/mês + criação do site.</m.p>
+        <m.p className={styles.sub} variants={heroItem}>Sites que atendem, agendam e vendem por você, a partir de R$&nbsp;597, sem mensalidade.</m.p>
         <m.div className={styles.actions} variants={heroItem}>
           <ProblemFlowTrigger className={styles.primary}>Quero o meu <span aria-hidden="true">→</span></ProblemFlowTrigger>
-          <a className={styles.secondary} href="#solucoes">Testar uma demonstração</a>
+          <a className={styles.secondary} href="#solucoes">Encontrar minha solução</a>
         </m.div>
       </m.div>
 

@@ -19,7 +19,7 @@ export default function Home() {
       <IntroHero />
       <Solutions />
       <ProjectList />
-      <ActionBand title="Vamos encontrar a solução para o seu projeto" text="Conte o que atrapalha o seu dia. Em três perguntas, a gente entende o que faz sentido para você." cta="Contar meu problema" source="band_projects" />
+      <ActionBand title="Vamos encontrar a solução para o seu projeto" cta="Contar meu problema" source="band_projects" />
       <PlanFinder />
       <Faq />
       <FinalCall />

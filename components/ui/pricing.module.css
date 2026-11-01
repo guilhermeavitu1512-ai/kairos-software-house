@@ -1,14 +1,7 @@
-.billing { display: flex; justify-content: center; margin: 0 0 36px; }
-.switch { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 0; border: 0; background: none; color: var(--paper); font-size: 15px; font-weight: 600; }
-.track { display: flex; align-items: center; width: 46px; height: 26px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,.2); transition: background-color 200ms ease-out; }
-.track i { width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform 200ms var(--ease); }
-.switch[aria-checked="true"] .track { background: var(--amber); }
-.switch[aria-checked="true"] .track i { transform: translateX(20px); }
-
-.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
 .card { position: relative; display: flex; flex-direction: column; padding: 44px 24px 28px; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; background: var(--ink-2); transition: border-color 200ms; }
-.card[data-highlight="true"] { z-index: 1; border: 2px solid var(--amber); }
-.card .badge { position: absolute; top: 0; right: 0; margin: 0; padding: 4px 12px; border-radius: 0 13px 0 12px; background: var(--amber); color: #1a1205; font-size: 13px; font-weight: 700; }
+.card[data-highlight="true"] { z-index: 1; border: 2px solid var(--blue); }
+.card .badge { position: absolute; top: 0; right: 0; margin: 0; padding: 4px 12px; border-radius: 0 13px 0 12px; background: var(--blue); color: #fff; font-size: 13px; font-weight: 700; }
 .card h3 { margin: 0; font-size: 20px; font-weight: 600; }
 .price { display: flex; align-items: baseline; gap: 4px; margin: 14px 0 0; }
 .price small { color: #aeb5c1; font-size: 18px; }
@@ -17,9 +10,8 @@
 .terms { margin: 4px 0 12px; color: #929bab; font-size: 13px; }
 .description { margin: 0; color: #aeb5c1; font-size: 15px; line-height: 1.5; }
 .card ul { display: grid; gap: 8px; margin: 16px 0 24px; padding: 0; list-style: none; font-size: 15px; }
-.card li::before { content: "✓"; margin-right: 8px; color: #6be6a0; }
+.card li::before { content: "✓"; margin-right: 8px; color: var(--blue-bright); }
 
 @media (max-width: 860px) {
   .grid { grid-template-columns: 1fr; }
 }
-@media (prefers-reduced-motion: reduce) { .track, .track i { transition: none; } }

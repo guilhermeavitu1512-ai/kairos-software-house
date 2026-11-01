@@ -18,7 +18,7 @@
 .side { max-width: 320px; }
 .side h2 { margin: 0; font-family: var(--display); font-size: 36px; font-weight: 600; line-height: 1.08; letter-spacing: -.03em; }
 .side p { margin: 12px 0 24px; color: #aeb5c1; font-size: 16px; line-height: 1.5; }
-.cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 999px; background: var(--amber); color: #1a1205; font-size: 16px; font-weight: 600; }
+.cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 16px; font-weight: 600; }
 
 /* On a phone the site takes the whole screen and the call stays pinned below it. */
 @media (max-width: 760px) {
