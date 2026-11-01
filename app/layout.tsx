@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { COMPANY } from "@/lib/constants";
 import SiteChrome from "@/components/kairos/SiteChrome";
 import "@fontsource-variable/dm-sans/wght.css";
+import "@fontsource-variable/bricolage-grotesque/wght.css";
 import "./globals.css";
 import "./editorial.css";
 
@@ -19,8 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#030914", colorScheme: "dark light" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#05070c", colorScheme: "dark light" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR"><body><a className="skip-link" href="#conteudo">Ir para o conteúdo</a><SiteChrome>{children}</SiteChrome></body></html>;
+  return <html lang="pt-BR" suppressHydrationWarning><body><a className="skip-link" href="#conteudo">Ir para o conteúdo</a><SiteChrome>{children}</SiteChrome></body></html>;
 }

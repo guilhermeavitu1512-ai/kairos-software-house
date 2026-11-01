@@ -70,7 +70,8 @@ export const DEADLINE_OPTIONS: BriefingOption<ProjectDeadline>[] = [
 
 export const BUDGET_RANGES: BriefingOption[] = [
   { value: "unknown", label: "Ainda não sei" },
-  { value: "up-to-5k", label: "Até R$ 5 mil" },
+  { value: "up-to-1k", label: "Até R$ 1 mil" },
+  { value: "1k-5k", label: "R$ 1 mil – R$ 5 mil" },
   { value: "5k-15k", label: "R$ 5 mil – R$ 15 mil" },
   { value: "15k-30k", label: "R$ 15 mil – R$ 30 mil" },
   { value: "above-30k", label: "Acima de R$ 30 mil" },

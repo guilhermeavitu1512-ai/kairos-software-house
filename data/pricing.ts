@@ -1,22 +1,24 @@
 export const sitePlans = [
   {
-    id: "essencial", name: "Site Essencial", cta: "Quero o Essencial",
-    installment: "39,70", upfront: "397", pages: "Até 1 página completa (landing page)", revisions: "1 rodada de revisões", delivery: "5 a 7 dias úteis",
-    description: "Seus serviços e contato reunidos em uma única página.",
-    features: ["Até 1 página completa (landing page)", "1 rodada de revisões", "Layout para computador e celular"],
+    id: "simples", name: "Site simples", cta: "Quero o site simples",
+    upfront: "497", monthly: "49", installment: "165,67", delivery: "5 a 7 dias úteis",
+    description: "Uma página para mostrar o que você faz e levar o cliente ao WhatsApp.",
+    features: ["Página única completa", "Serviços, localização e WhatsApp", "Pronto para computador e celular", "2 rodadas de revisões"],
   },
   {
-    id: "profissional", name: "Site Profissional", cta: "Quero o Profissional", recommended: true,
-    installment: "59,70", upfront: "597", pages: "Até 5 páginas", revisions: "2 rodadas de revisões", delivery: "7 a 10 dias úteis",
-    description: "Mais espaço para apresentar sua empresa e explicar cada serviço.",
-    features: ["Até 5 páginas", "2 rodadas de revisões", "Layout para computador e celular", "Estrutura personalizada e recursos definidos na proposta"],
+    id: "agendamento", name: "Site com agendamento", cta: "Quero agenda online", recommended: true,
+    upfront: "697", monthly: "79", installment: "232,33", delivery: "7 a 10 dias úteis",
+    description: "Seu cliente escolhe serviço, profissional e horário sem troca de mensagens.",
+    features: ["Tudo do site simples", "Agenda online com serviços e horários", "Confirmação pelo WhatsApp", "2 rodadas de revisões"],
   },
   {
-    id: "business", name: "Site Business", cta: "Quero o Business",
-    installment: "69,70", upfront: "697", pages: "Até 8 páginas", revisions: "3 rodadas de revisões", delivery: "10 a 15 dias úteis",
-    description: "Mais páginas, personalização e integrações simples para o seu projeto.",
-    features: ["Até 8 páginas", "3 rodadas de revisões", "Maior nível de personalização", "Integrações simples quando aplicável"],
+    id: "pedidos", name: "Sistema de pedidos", cta: "Quero receber pedidos",
+    upfront: "997", monthly: "99", installment: "332,33", delivery: "10 a 15 dias úteis",
+    description: "Cardápio, pedidos e painel para vender direto, sem comissão de aplicativo.",
+    features: ["Cardápio ou catálogo online", "Pedido com delivery ou retirada", "Painel para gerenciar pedidos", "2 rodadas de revisões"],
   },
 ] as const;
+
+export type PlanId = (typeof sitePlans)[number]["id"];
 
 export const customSolutions = ["E-commerce", "Sistema", "SaaS", "Aplicativo", "Projeto personalizado"] as const;

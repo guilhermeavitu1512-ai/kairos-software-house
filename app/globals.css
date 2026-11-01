@@ -1,8 +1,8 @@
 :root {
-  --ink: #030914; --ink-2: #071426; --ink-3: #0a2a5e; --blue: #126bff; --blue-bright: #2797ff; --cyan: #64d8ff;
+  --ink: #05070c; --ink-2: #0c1018; --ink-3: #141a26; --blue: #2f6bff; --blue-bright: #6e9bff; --cyan: #9dbcff; --amber: #ffb75e;
   --paper: #f5f7fa; --paper-2: #e9eef5; --muted: #8d9aad; --text-dark: #091526; --line: rgba(166,193,229,.16);
   --line-dark: rgba(10,35,69,.15); --page: min(1440px, calc(100vw - 96px)); --radius: 10px;
-  --ease: cubic-bezier(.22,1,.36,1); --pointer-x: 0; --pointer-y: 0; --font: "DM Sans Variable", "Segoe UI", sans-serif;
+  --ease: cubic-bezier(.22,1,.36,1); --pointer-x: 0; --pointer-y: 0; --font: "DM Sans Variable", "Segoe UI", sans-serif; --display: "Bricolage Grotesque Variable", "DM Sans Variable", sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:92px;background:var(--ink)}
 body{margin:0;overflow-x:hidden;background:var(--ink);color:var(--paper);font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -934,7 +934,7 @@ p{text-wrap:pretty}
 @media (max-width:760px){.hero h1{font-size:clamp(47px,12.7vw,60px)}}
 
 /* Contrast refinement */
-:root{--ink:#030914;--ink-2:#071426;--ink-3:#0a2a5e;--blue:#126bff;--blue-bright:#2797ff;--cyan:#64b8ff;--paper:#f5f7fa;--paper-2:#f0f3f6;--muted:#8d9aad;--text-dark:#0a1020;--line:rgba(166,193,229,.14);--line-dark:rgba(10,16,32,.13)}
+:root{--ink:#05070c;--ink-2:#0c1018;--ink-3:#141a26;--blue:#2f6bff;--blue-bright:#6e9bff;--cyan:#9dbcff;--paper:#f5f7fa;--paper-2:#f0f3f6;--muted:#8d9aad;--text-dark:#0a1020;--line:rgba(166,193,229,.14);--line-dark:rgba(10,16,32,.13)}
 body,.page-transition{background:var(--ink);color:var(--paper)}.section--light{background:var(--paper);color:var(--text-dark)}.section--dark{background:var(--ink-2);color:var(--paper)}
 .site-header.is-scrolled{border-color:rgba(166,193,229,.14);background:rgba(3,9,20,.92)}.desktop-nav{color:#a4afbf}.brand .kairos-mark__frame{box-shadow:none}.brand .kairos-mark__core{box-shadow:0 0 8px rgba(18,107,255,.22)}
 .hero{background:var(--ink);color:var(--paper)}.hero-copy>p{color:var(--muted)}.hero h1 em{color:var(--blue-bright)}.hero-symbol::before{background:rgba(18,107,255,.08);filter:blur(48px)}.hero-symbol .kairos-mark__frame{box-shadow:0 0 18px rgba(39,151,255,.12)}.hero-symbol .kairos-mark__core{box-shadow:0 0 12px rgba(18,107,255,.26)}

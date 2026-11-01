@@ -1,0 +1,6 @@
+.footer { padding: 48px 16px 24px; overflow: hidden; border-top: 1px solid rgba(255,255,255,.12); background: var(--ink); }
+.nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; color: #b9c1cf; font-size: 15px; }
+.nav a:hover { color: #fff; }
+.wordmark { margin: 24px 0 8px; color: var(--paper); font-family: var(--display); font-size: 21.5vw; font-weight: 700; line-height: .86; letter-spacing: -.05em; text-align: center; }
+.legal { margin: 0; color: #7d8797; font-size: 13px; text-align: center; }

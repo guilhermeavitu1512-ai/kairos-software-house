@@ -10,7 +10,8 @@ export const COMPANY = {
 } as const;
 
 export const CONTACT_BUDGETS = [
-  "Até R$ 5 mil",
+  "Até R$ 1 mil",
+  "R$ 1 mil – R$ 5 mil",
   "R$ 5 mil – R$ 15 mil",
   "R$ 15 mil – R$ 30 mil",
   "Acima de R$ 30 mil",

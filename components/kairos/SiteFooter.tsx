@@ -1,26 +1,19 @@
 import Link from "next/link";
-import KairosMark from "./KairosMark";
+import styles from "./SiteFooter.module.css";
 
 export default function SiteFooter() {
   return (
-    <footer className="site-footer">
-      <div className="footer-main">
-        <div className="footer-brand">
-          <Link className="brand" href="/" aria-label="KAIROS, página inicial"><KairosMark compact /><span>KAIROS</span></Link>
-        </div>
-        <nav className="footer-nav" aria-label="Navegação do rodapé">
-          <Link href="/#projetos">Projetos</Link>
-          <Link href="/#servicos">Serviços</Link>
-          <Link href="/#precos">Planos</Link>
-          <Link href="/privacidade">Privacidade</Link>
-          <Link href="/sobre">Sobre</Link>
-          <Link href="/contato">Contato</Link>
-        </nav>
-      </div>
-      <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} KAIROS · Sites · Sistemas · Apps · Automações</span>
-        <a href="#conteudo">Voltar ao topo ↑</a>
-      </div>
+    <footer className={styles.footer}>
+      <nav className={styles.nav} aria-label="Navegação do rodapé">
+        <Link href="/#projetos">Projetos</Link>
+        <Link href="/#demonstracoes">Demonstrações</Link>
+        <Link href="/#precos">Pacotes</Link>
+        <Link href="/sobre">Sobre</Link>
+        <Link href="/contato">Contato</Link>
+        <Link href="/privacidade">Privacidade</Link>
+      </nav>
+      <p className={styles.wordmark} aria-hidden="true">KAIROS</p>
+      <p className={styles.legal}>© {new Date().getFullYear()} KAIROS · O momento certo para o seu negócio.</p>
     </footer>
   );
 }

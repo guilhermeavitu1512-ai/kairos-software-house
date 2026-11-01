@@ -7,9 +7,10 @@ import { ProblemFlowTrigger } from "./problem-flow/ProblemFlow";
 import styles from "./SiteHeader.module.css";
 
 const links = [
+  { label: "Soluções", href: "/#solucoes" },
   { label: "Projetos", href: "/#projetos" },
-  { label: "Serviços", href: "/#servicos" },
-  { label: "Planos", href: "/#precos" },
+  { label: "Demonstrações", href: "/#demonstracoes" },
+  { label: "Pacotes", href: "/#precos" },
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ];

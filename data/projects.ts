@@ -37,6 +37,13 @@ export type ProjectRecord = ProjectBase | Project;
 
 export const projectRecords: ProjectRecord[] = [
   {
+    id: "cassio", slug: "cassio-franklin", name: "Cássio Franklin", category: "Site e agenda online",
+    description: "Site e agendamento para barbearia, com escolha de barbeiro, serviço e horário, sem criar conta. Projeto de demonstração da KAIROS.",
+    image: "/portfolio/cassio/home-1440.webp", url: "/projetos/cassio-franklin", liveUrl: "https://cassiofranklin.vercel.app/",
+    highlights: ["Agendamento em etapas: barbeiro, corte, horário e dados", "Só aparecem horários livres", "Galeria, preços, localização e instalação no celular"],
+    featured: false, portfolio: true, order: -1,
+  },
+  {
     id: "vyne",
     slug: "vyne",
     name: "VYNE",
@@ -78,6 +85,13 @@ export const projectRecords: ProjectRecord[] = [
     image: "/portfolio/blend/home-1440.png", url: "/projetos/blend-burger", liveUrl: "https://blend-burger-mocha.vercel.app/",
     highlights: ["Vitrine com destaque rotativo e fotos em alta", "Ingredientes apresentados camada por camada", "Pedido com delivery, retirada e busca de CEP"],
     featured: false, portfolio: true, order: 0,
+  },
+  {
+    id: "arara", slug: "arara", name: "ARARA", category: "Loja de roupas",
+    description: "Loja de roupas com intro animada, arara interativa, ateliê de peças personalizadas e pedido pelo WhatsApp. Projeto de demonstração da KAIROS.",
+    image: "/portfolio/arara/home-1440.webp", url: "/projetos/arara", liveUrl: "https://arara-roupas.vercel.app/",
+    highlights: ["Arara interativa com as peças em cabides", "Ateliê com tecido, linha e bordado", "Guia de tamanhos, sacola e pedido pelo WhatsApp"],
+    featured: false, portfolio: true, order: 2.5,
   },
   {
     id: "kairos",

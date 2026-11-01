@@ -1,0 +1,65 @@
+import { commonQuestions, projectSteps } from "@/data/site-copy";
+import { buildWhatsAppUrl } from "@/lib/constants";
+import { ProblemFlowTrigger } from "@/components/kairos/problem-flow/ProblemFlow";
+import styles from "./Home.module.css";
+
+export function ActionBand({ title, text, cta, source }: { title: string; text: string; cta: string; source: string }) {
+  return (
+    <aside className={styles.section} aria-label={title}>
+      <div className={`${styles.shell} ${styles.band}`}>
+        <div>
+          <h2>{title}</h2>
+          <p>{text}</p>
+        </div>
+        <div className={styles.bandActions}>
+          <ProblemFlowTrigger className={styles.bandCta}>{cta} <span aria-hidden="true">→</span></ProblemFlowTrigger>
+          <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source={source}>Falar no WhatsApp ↗</a>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+export function Process() {
+  return (
+    <section id="como-funciona" className={styles.section} aria-labelledby="process-title">
+      <div className={styles.shell}>
+        <header className={styles.head}>
+          <p className={styles.kicker}>Como funciona</p>
+          <h2 id="process-title">Da primeira mensagem ao site no ar.</h2>
+        </header>
+        <ol className={styles.steps}>
+          {projectSteps.map((step, index) => <li key={step.title}><span>{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+export function Faq() {
+  return (
+    <section id="duvidas" className={styles.section} aria-labelledby="faq-title">
+      <div className={`${styles.shell} ${styles.faqGrid}`}>
+        <header className={styles.head}>
+          <p className={styles.kicker}>Dúvidas</p>
+          <h2 id="faq-title">Antes de contratar.</h2>
+          <a href={buildWhatsAppUrl("tirar uma dúvida antes de contratar")} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="faq">Perguntar no WhatsApp ↗</a>
+        </header>
+        <div className={styles.faq}>
+          {commonQuestions.map((item) => <details key={item.question}><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function FinalCall() {
+  return (
+    <section className={styles.final} aria-labelledby="final-title">
+      <p className={styles.finalClock} aria-hidden="true">03:00</p>
+      <h2 id="final-title">Hoje à noite, seu negócio<br />pode continuar aberto.</h2>
+      <ProblemFlowTrigger className={styles.finalCta}>Quero o meu site <span aria-hidden="true">→</span></ProblemFlowTrigger>
+      <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" data-conversion="whatsapp_open" data-source="footer">Prefiro ir direto ao WhatsApp ↗</a>
+    </section>
+  );
+}
