@@ -1,25 +1,24 @@
-/* One stage: the same site running on a laptop and on a phone, project after project. */
+/* One clip per project: the same site on a laptop and a phone, always in step. */
 .section { padding: clamp(72px, 10vw, 130px) 16px 0; }
 .shell { width: min(1120px, 100%); margin-inline: auto; }
 .head h1, .head h2 { margin: 0; font-family: var(--display); font-size: clamp(34px, 5vw, 60px); font-weight: 600; line-height: 1.04; letter-spacing: -.035em; }
 .head p { margin: 12px 0 0; color: #aeb5c1; font-size: 18px; }
 
-.tabs { display: flex; gap: 8px; margin: 26px -16px 26px; padding: 0 16px 4px; overflow-x: auto; scrollbar-width: none; }
+.tabs { display: flex; gap: 8px; margin: 26px -16px 18px; padding: 0 16px 4px; overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
 .tabs button { flex: none; min-height: 44px; padding: 0 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: none; color: #c8cfdb; font-size: 14px; font-weight: 600; transition: background-color 180ms, color 180ms; }
 .tabs button:hover { background: rgba(255,255,255,.07); }
 .tabs button[aria-pressed="true"] { border-color: var(--amber); background: var(--amber); color: #1a1205; }
 
-.stage { position: relative; padding-right: 13%; animation: rise 500ms var(--ease) both; }
-@keyframes rise { from { opacity: 0; transform: translateY(16px); } }
-.lid { aspect-ratio: 16 / 9; overflow: hidden; border: 8px solid #171b24; border-bottom-width: 14px; border-radius: 16px 16px 4px 4px; background: #000; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
-.lid video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.base { display: block; width: 106%; height: 12px; margin-left: -3%; border-radius: 0 0 14px 14px; background: linear-gradient(180deg, #2a303c, #12151c); }
+.player { position: relative; aspect-ratio: 16 / 9; background: var(--ink); }
+.player > video:first-child { display: block; width: 100%; height: 100%; object-fit: contain; }
+.ahead { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.spinner { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 3px solid rgba(255,255,255,.25); border-top-color: var(--amber); border-radius: 50%; animation: spin 800ms linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.playButton { position: absolute; z-index: 3; top: 50%; left: 50%; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--amber); color: #1a1205; font-size: 15px; font-weight: 700; white-space: nowrap; box-shadow: 0 14px 34px rgba(0,0,0,.55); transform: translate(-50%, -50%); }
 
-.phone { position: absolute; right: 0; bottom: -6%; width: 22%; aspect-ratio: 9 / 16; overflow: hidden; border: 6px solid #171b24; border-radius: 24px; background: #000; box-shadow: 0 24px 50px rgba(0,0,0,.65); }
-.phone video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
-
-.info { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: 40px; animation: rise 500ms var(--ease) both; }
+.info { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: 18px; animation: rise 500ms var(--ease) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
 .info h3 { margin: 0; font-family: var(--display); font-size: clamp(26px, 3vw, 36px); font-weight: 600; letter-spacing: -.025em; }
 .info p { margin: 6px 0 0; color: #aeb5c1; font-size: 16px; }
 .actions { display: flex; flex: none; gap: 8px; }
@@ -30,11 +29,7 @@
 .live:hover { background: var(--paper); color: var(--ink); }
 
 @media (max-width: 760px) {
-  .stage { padding-right: 0; }
-  .lid { border-width: 5px; border-bottom-width: 9px; border-radius: 10px 10px 3px 3px; }
-  .base { height: 7px; }
-  .phone { right: 4px; bottom: -22%; width: 27%; border-width: 3px; border-radius: 13px; }
-  .info { flex-direction: column; align-items: stretch; margin-top: clamp(64px, 20vw, 96px); }
+  .info { flex-direction: column; align-items: stretch; }
   .actions > * { flex: 1; }
 }
-@media (prefers-reduced-motion: reduce) { .stage, .info { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .info { animation: none; } .spinner { animation: none; } }
